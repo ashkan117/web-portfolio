@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Quarrel With Dynamic Programming · Development from &#34;Scratch&#34;
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Ashkan Faghihi">
+<meta name="description" content="DP is an Art Link to heading Snapshot is clear, global is not Link to heading An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&rsquo;ll go through a leetcode problem. https://leetcode.com/problems/min-cost-climbing-stairs/description/
+The case specifially which led to this is one where we can see a large cost being unattractive short term but my intuition was telling me couldn&rsquo;t it be possible that in the long run this is good?">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quarrel With Dynamic Programming"/>
+<meta name="twitter:description" content="DP is an Art Link to heading Snapshot is clear, global is not Link to heading An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&rsquo;ll go through a leetcode problem. https://leetcode.com/problems/min-cost-climbing-stairs/description/
+The case specifially which led to this is one where we can see a large cost being unattractive short term but my intuition was telling me couldn&rsquo;t it be possible that in the long run this is good?"/>
+
+<meta property="og:title" content="Quarrel With Dynamic Programming" />
+<meta property="og:description" content="DP is an Art Link to heading Snapshot is clear, global is not Link to heading An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&rsquo;ll go through a leetcode problem. https://leetcode.com/problems/min-cost-climbing-stairs/description/
+The case specifially which led to this is one where we can see a large cost being unattractive short term but my intuition was telling me couldn&rsquo;t it be possible that in the long run this is good?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-27T11:16:59-08:00" />
+<meta property="article:modified_time" content="2023-01-27T11:16:59-08:00" />
+
+
+
+
+<link rel="canonical" href="http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.109.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Development from &#34;Scratch&#34;
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                
+                
+                
+                
+              
+              <li class="navigation-item">
+                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/">
+              Quarrel With Dynamic Programming
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-01-27T11:16:59-08:00">
+                January 27, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="dp-is-an-art">
+  DP is an Art
+  <a class="heading-link" href="#dp-is-an-art">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h1 id="snapshot-is-clear-global-is-not">
+  Snapshot is clear, global is not
+  <a class="heading-link" href="#snapshot-is-clear-global-is-not">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&rsquo;ll go through a leetcode problem. <a href="https://leetcode.com/problems/min-cost-climbing-stairs/description/">https://leetcode.com/problems/min-cost-climbing-stairs/description/</a></p>
+<p>The case specifially which led to this is one where we can see a large cost being unattractive short term but my intuition was telling me couldn&rsquo;t it be possible that in the long run this is good?</p>
+<p>Input: cost = [1,100,1,1,1,100,1,1,100,1]<br>
+Output: 6<br>
+We can see that the 100s seem like mines that we want to avoid at all cost. However in my head there seemed like a possibility that when we&rsquo;re taking the last step stepping on one mine is fine if that is the only mine. What if future paths ended up having way more mines on its path to the last step?
+Another way to explain why things are a little unclear are by imagining the recursive solution.<br>
+cost[i] + min(recursiveCall(cost, i - 1), recursiveCall(cost, i - 2))<br>
+In the recursive view of things my issue is that the recursive calls have no context of the mines that are along the way so couldn&rsquo;t one of the recurve calls contain a mine that seems bad in the bottom up approach</p>
+<p>In order to show this then I need to find a way where we can show that there is a way to reform the cost array to have a mine early on that ends up being an optimal path.
+Input: cost = [1,100,1,1,1,100,1,1,100,1]\</p>
+<p>Let&rsquo;s change it to where maybe the 100 seems bad now but there are way worse options
+Input: cost = [1, 100, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 1], length = 10<br>
+The 100 looks pretty good now. Let&rsquo;s change the question so you can jump 8 steps. So the optimal would be 100 + 1, since 1 + 2000 is worse</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>currentCost + min(    recursiveCall(step1) , ... , recursiveCall(step8)    )
+</span></span></code></pre></div><p><strong>They key is that once you make the decision it&rsquo;s optimal. The future step depends on these optimal subproblems. The only way to get here is through its predecessor.</strong></p>
+<h1 id="optimal-substructure">
+  Optimal Substructure
+  <a class="heading-link" href="#optimal-substructure">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p><a href="https://cs.stackexchange.com/a/79749">https://cs.stackexchange.com/a/79749</a></p>
+<p>A characteristic of dp problems are that they contain an optimal substructure. This means that an optimal solution must depend on an optimal solution from a subproblem
+from wiki</p>
+<blockquote>
+<p>Typically, a greedy algorithm is used to solve a problem with optimal substructure if it can be proven by induction that this is optimal at each step.[1] Otherwise, provided the problem exhibits overlapping subproblems as well,
+divide-and-conquer methods or dynamic programming may be used. If there are no appropriate greedy algorithms and the problem fails to exhibit overlapping subproblems,
+often a lengthy but straightforward search of the solution space is the best alternative.</p>
+</blockquote>
+<h1 id="proving-optimal-substructure">
+  Proving Optimal Substructure
+  <a class="heading-link" href="#proving-optimal-substructure">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Going back to the min climbing stairs problem lets prove it. Let&rsquo;s say we have a suboptimal solution to a subproblem that we can choose to try and build our optimal subproblem. We&rsquo;ll do an intuitive proof using proof by contridition
+Input: cost = [1,100,1]<br>
+Let&rsquo;s say we&rsquo;re at index 2</p>
+<p>We see that if we took two steps before this the cost is 1, if we take one step the cost is 100. We see that by picking the suboptimal subproblem we end up with a suboptimal solution.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Ashkan Faghihi 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jan 2023 19:15:28 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Jan 2023 11:16:59 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quarrel With Dynamic Programming</title>
+      <link>http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/</link>
+      <pubDate>Fri, 27 Jan 2023 11:16:59 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/</guid>
+      <description>DP is an Art Link to heading Snapshot is clear, global is not Link to heading An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&amp;rsquo;ll go through a leetcode problem. https://leetcode.com/problems/min-cost-climbing-stairs/description/
+The case specifially which led to this is one where we can see a large cost being unattractive short term but my intuition was telling me couldn&amp;rsquo;t it be possible that in the long run this is good?</description>
+    </item>
+    
     <item>
       <title>Choose Unchoose Pattern Case Study</title>
       <link>http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/</link>

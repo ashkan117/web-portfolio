@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/</loc>
-    <lastmod>2023-01-26T19:15:28-08:00</lastmod>
-  </url><url>
     <loc>http://ashkanfaghihi.dev/</loc>
-    <lastmod>2023-01-26T19:15:28-08:00</lastmod>
+    <lastmod>2023-01-27T11:16:59-08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -19,6 +16,12 @@
                 />
   </url><url>
     <loc>http://ashkanfaghihi.dev/posts/</loc>
+    <lastmod>2023-01-27T11:16:59-08:00</lastmod>
+  </url><url>
+    <loc>http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/</loc>
+    <lastmod>2023-01-27T11:16:59-08:00</lastmod>
+  </url><url>
+    <loc>http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/</loc>
     <lastmod>2023-01-26T19:15:28-08:00</lastmod>
   </url><url>
     <loc>http://ashkanfaghihi.dev/about/about/</loc>
