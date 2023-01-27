@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development from &#34;Scratch&#34;</title>
+    <link>http://ashkanfaghihi.dev/</link>
+    <description>Recent content on Development from &#34;Scratch&#34;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jan 2023 19:15:28 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Choose Unchoose Pattern Case Study</title>
+      <link>http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/</link>
+      <pubDate>Thu, 26 Jan 2023 19:15:28 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/</guid>
+      <description>Pre Requisites Link to heading This post won&amp;rsquo;t elaborate on the following topics since there is already many great ones:
+Choose unchoose pattern Leetcode Combinations Problem https://leetcode.com/problems/combinations/description Backtracking Context Link to heading This pattern is often just given as a part of a template for similar problems/ https://leetcode.com/problems/combinations/solutions/429526/general-backtracking-questions-solutions-in-python-for-reference/ https://leetcode.com/problems/combinations/solutions/27006/a-template-to-those-combination-problems/
+My goal is to better give intuition behind it by comparing it to an equivalent but different code
+My Initial Solution Link to heading I was working on Leetcode Combinations problem and realized that this is an choose unchoose pattern like problem but my implementation seemed a little funny in comparison.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://ashkanfaghihi.dev/about/about/</link>
+      <pubDate>Sat, 21 Jan 2023 16:18:17 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/about/about/</guid>
+      <description>Introduction Link to heading Welcome to my page. How you got here I have no clue but I hope it can be of service to you in some way. My goal for this page is to discuss some concepts that I think are of value. Short and sweet posts that expand or introduce you to topics that I stumbled on. After some time I&amp;rsquo;ve learned to avoid some websites like medium since they end up beating some topics to death.</description>
+    </item>
+    
+    <item>
+      <title>Intro</title>
+      <link>http://ashkanfaghihi.dev/posts/my-first-post/</link>
+      <pubDate>Sat, 21 Jan 2023 15:16:27 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/my-first-post/</guid>
+      <description>Introduction Link to heading TODO</description>
+    </item>
+    
+  </channel>
+</rss>

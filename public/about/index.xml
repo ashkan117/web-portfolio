@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Development from &#34;Scratch&#34;</title>
+    <link>http://ashkanfaghihi.dev/about/</link>
+    <description>Recent content in Abouts on Development from &#34;Scratch&#34;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 21 Jan 2023 16:18:17 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://ashkanfaghihi.dev/about/about/</link>
+      <pubDate>Sat, 21 Jan 2023 16:18:17 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/about/about/</guid>
+      <description>Introduction Link to heading Welcome to my page. How you got here I have no clue but I hope it can be of service to you in some way. My goal for this page is to discuss some concepts that I think are of value. Short and sweet posts that expand or introduce you to topics that I stumbled on. After some time I&amp;rsquo;ve learned to avoid some websites like medium since they end up beating some topics to death.</description>
+    </item>
+    
+  </channel>
+</rss>
