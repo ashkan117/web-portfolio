@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Leetcode 91: Decode Ways (Bounding your recursive calls) · Development from &#34;Scratch&#34;
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Ashkan Faghihi">
+<meta name="description" content="Why I like this problem Link to heading https://leetcode.com/problems/decode-ways/
+A lot of the canonical recursive problems you start out with have really simple code. Things that come to mind are https://leetcode.com/problems/fibonacci-number/, https://leetcode.com/problems/climbing-stairs/ and https://leetcode.com/problems/house-robber/. This is because the recursive calls are really simple, it doesn&rsquo;t really require you to understand how the recursive calls unwind. Decode ways does this will for a few reasons.
+The subproblems are not trivial to &ldquo;build&rdquo; You can&rsquo;t blindly make recursive calls Note: Most solutions end up doing a bottom up approach which is better, I just want to discuess the top down approach since that is usually my first way to tackle these problems.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Leetcode 91: Decode Ways (Bounding your recursive calls)"/>
+<meta name="twitter:description" content="Why I like this problem Link to heading https://leetcode.com/problems/decode-ways/
+A lot of the canonical recursive problems you start out with have really simple code. Things that come to mind are https://leetcode.com/problems/fibonacci-number/, https://leetcode.com/problems/climbing-stairs/ and https://leetcode.com/problems/house-robber/. This is because the recursive calls are really simple, it doesn&rsquo;t really require you to understand how the recursive calls unwind. Decode ways does this will for a few reasons.
+The subproblems are not trivial to &ldquo;build&rdquo; You can&rsquo;t blindly make recursive calls Note: Most solutions end up doing a bottom up approach which is better, I just want to discuess the top down approach since that is usually my first way to tackle these problems."/>
+
+<meta property="og:title" content="Leetcode 91: Decode Ways (Bounding your recursive calls)" />
+<meta property="og:description" content="Why I like this problem Link to heading https://leetcode.com/problems/decode-ways/
+A lot of the canonical recursive problems you start out with have really simple code. Things that come to mind are https://leetcode.com/problems/fibonacci-number/, https://leetcode.com/problems/climbing-stairs/ and https://leetcode.com/problems/house-robber/. This is because the recursive calls are really simple, it doesn&rsquo;t really require you to understand how the recursive calls unwind. Decode ways does this will for a few reasons.
+The subproblems are not trivial to &ldquo;build&rdquo; You can&rsquo;t blindly make recursive calls Note: Most solutions end up doing a bottom up approach which is better, I just want to discuess the top down approach since that is usually my first way to tackle these problems." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ashkanfaghihi.dev/posts/decode-ways/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-30T09:09:58-08:00" />
+<meta property="article:modified_time" content="2023-01-30T09:09:58-08:00" />
+
+
+
+
+<link rel="canonical" href="http://ashkanfaghihi.dev/posts/decode-ways/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.109.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Development from &#34;Scratch&#34;
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                
+                
+                
+                
+              
+              <li class="navigation-item">
+                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://ashkanfaghihi.dev/posts/decode-ways/">
+              Leetcode 91: Decode Ways (Bounding your recursive calls)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-01-30T09:09:58-08:00">
+                January 30, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-i-like-this-problem">
+  Why I like this problem
+  <a class="heading-link" href="#why-i-like-this-problem">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p><a href="https://leetcode.com/problems/decode-ways/">https://leetcode.com/problems/decode-ways/</a><br>
+A lot of the canonical recursive problems you start out with have really simple code. Things that come to mind are <a href="https://leetcode.com/problems/fibonacci-number/">https://leetcode.com/problems/fibonacci-number/</a>,  <a href="https://leetcode.com/problems/climbing-stairs/">https://leetcode.com/problems/climbing-stairs/</a> and <a href="https://leetcode.com/problems/house-robber/">https://leetcode.com/problems/house-robber/</a>. This is because the recursive calls are really simple, it doesn&rsquo;t really require you to understand how the recursive calls unwind. Decode ways does this will for a few reasons.</p>
+<ol>
+<li>The subproblems are not trivial to &ldquo;build&rdquo;</li>
+<li>You can&rsquo;t blindly make recursive calls</li>
+</ol>
+<p>Note: Most solutions end up doing a bottom up approach which is better, I just want to discuess the top down approach since that is usually my first way to tackle these problems.
+This also reminds me of <strong>Generate Parentheses</strong> since we have some bounds on when we can make recursive calls.</p>
+<h1 id="the-subproblems">
+  The subproblems
+  <a class="heading-link" href="#the-subproblems">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>There were a few things that you must recognize before you can tackle the solution. One of them isn&rsquo;t too difficult to notice. The easy case with recursion is usually just take one off the current input. If we have &ldquo;226&rdquo; we can see that the solution does depend on &ldquo;22&rdquo;. &ldquo;22&rdquo; therefore depends on &ldquo;2&rdquo;. The case that&rsquo;s a little harder to notice is that you always want to consider two character substrings as well. Given &ldquo;226&rdquo;, the solution also depends on what the results of &ldquo;26&rdquo; subproblem are. Likewise when we&rsquo;re looking at &ldquo;22&rdquo; we need to treat this as a two digit number as well. This leads to the 3 paths for input &ldquo;226&rdquo;.</p>
+<p>Input: s = &ldquo;226&rdquo;
+Output: 3
+Explanation: &ldquo;226&rdquo; could be decoded as &ldquo;BZ&rdquo; (2 26), &ldquo;VF&rdquo; (22 6), or &ldquo;BBF&rdquo; (2 2 6).</p>
+<p>The cases aren&rsquo;t exactly the most complicated but I did run into issues trying to code this breakdown of subproblems with off by one errors.</p>
+<h1 id="you-cant-blindly-make-recursive-calls">
+  You can&rsquo;t blindly make recursive calls
+  <a class="heading-link" href="#you-cant-blindly-make-recursive-calls">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>In the simple recursive problems I mentioned above you can simply return based off rec(n - 1) + rec(n - 2). You can always break the problem down in simple ways like this. In Decode Ways this is not the case. You need to handle the fact that the &ldquo;Decode&rdquo; we&rsquo;re doing is only valid from &ldquo;1&rdquo; - &ldquo;26&rdquo;. Let&rsquo;s look at the case &ldquo;336&rdquo; to explore this a little more. We can take &ldquo;6&rdquo; and we&rsquo;re left with &ldquo;33&rdquo;. This is not a valid way to decode things though since it&rsquo;s not a valid numerical representation for a character. Therefore we &ldquo;prune&rdquo; this path, we don&rsquo;t want to continue down recursively since it&rsquo;s not fruitful.</p>
+<p>Another case is &ldquo;220&rdquo;. You can&rsquo;t always assume the single character way works as well. You can&rsquo;t break things down into take &ldquo;0&rdquo; then solve the subproblem of &ldquo;22&rdquo; since &ldquo;0&rdquo; is not valid. This means we need another check for &ldquo;0&rdquo;.</p>
+<p>This leads us to our two important checks,</p>
+<ol>
+<li>You can only take a single digit character if it is not &ldquo;0&rdquo;</li>
+<li>You can only take a two digit character if the value it represents is [10, 26] inclusive.</li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Ashkan Faghihi 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

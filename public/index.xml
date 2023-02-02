@@ -6,7 +6,18 @@
     <description>Recent content on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Jan 2023 11:16:59 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Jan 2023 09:09:58 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leetcode 91: Decode Ways (Bounding your recursive calls)</title>
+      <link>http://ashkanfaghihi.dev/posts/decode-ways/</link>
+      <pubDate>Mon, 30 Jan 2023 09:09:58 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/decode-ways/</guid>
+      <description>Why I like this problem Link to heading https://leetcode.com/problems/decode-ways/
+A lot of the canonical recursive problems you start out with have really simple code. Things that come to mind are https://leetcode.com/problems/fibonacci-number/, https://leetcode.com/problems/climbing-stairs/ and https://leetcode.com/problems/house-robber/. This is because the recursive calls are really simple, it doesn&amp;rsquo;t really require you to understand how the recursive calls unwind. Decode ways does this will for a few reasons.
+The subproblems are not trivial to &amp;ldquo;build&amp;rdquo; You can&amp;rsquo;t blindly make recursive calls Note: Most solutions end up doing a bottom up approach which is better, I just want to discuess the top down approach since that is usually my first way to tackle these problems.</description>
+    </item>
+    
     <item>
       <title>Quarrel With Dynamic Programming</title>
       <link>http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/</link>
