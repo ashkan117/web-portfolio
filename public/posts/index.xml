@@ -6,7 +6,21 @@
     <description>Recent content in Posts on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Jan 2023 09:09:58 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Feb 2023 18:12:35 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intuitive Proof for Floyd&#39;s Algorithm (Linked List Cycle)</title>
+      <link>http://ashkanfaghihi.dev/posts/floyds-algorithm-intuitive-proof/</link>
+      <pubDate>Thu, 02 Feb 2023 18:12:35 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/floyds-algorithm-intuitive-proof/</guid>
+      <description>Introduction Link to heading I found a few resources that I think did a decent job at explaining bits and pieces but not the full thing. This is also a tool for me to think things through as I go through the proof.
+Leetcode solution with useful insights
+Math stackexchange with useful insights
+Neetcode&amp;rsquo;s solution, useful insights on proof
+Unrelated but cool modulus related history
+Note for clarity Link to heading First node of the tail means -T First node of the cycle means 0</description>
+    </item>
+    
     <item>
       <title>Leetcode 91: Decode Ways (Bounding your recursive calls)</title>
       <link>http://ashkanfaghihi.dev/posts/decode-ways/</link>

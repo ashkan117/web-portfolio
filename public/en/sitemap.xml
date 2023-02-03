@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://ashkanfaghihi.dev/</loc>
-    <lastmod>2023-01-30T09:09:58-08:00</lastmod>
+    <lastmod>2023-02-02T18:12:35-08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -15,10 +15,13 @@
                 href="http://ashkanfaghihi.dev/"
                 />
   </url><url>
-    <loc>http://ashkanfaghihi.dev/posts/decode-ways/</loc>
-    <lastmod>2023-01-30T09:09:58-08:00</lastmod>
+    <loc>http://ashkanfaghihi.dev/posts/floyds-algorithm-intuitive-proof/</loc>
+    <lastmod>2023-02-02T18:12:35-08:00</lastmod>
   </url><url>
     <loc>http://ashkanfaghihi.dev/posts/</loc>
+    <lastmod>2023-02-02T18:12:35-08:00</lastmod>
+  </url><url>
+    <loc>http://ashkanfaghihi.dev/posts/decode-ways/</loc>
     <lastmod>2023-01-30T09:09:58-08:00</lastmod>
   </url><url>
     <loc>http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/</loc>
