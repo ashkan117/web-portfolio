@@ -6,7 +6,17 @@
     <description>Recent content on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Feb 2023 18:12:35 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Feb 2023 09:25:15 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Nature of BST nodes (LCA of BST Case Study)</title>
+      <link>http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/</link>
+      <pubDate>Tue, 07 Feb 2023 09:25:15 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/</guid>
+      <description>Resources Link to heading https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes
+Characteristics of the problem Link to heading You can&amp;rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. You can&amp;rsquo;t start out with the root Link to heading In the constraints of the problem we have the added information that the nodes that we&amp;rsquo;re interested (p and q) are guaranteed to be in the tree.</description>
+    </item>
+    
     <item>
       <title>Intuitive Proof for Floyd&#39;s Algorithm (Linked List Cycle)</title>
       <link>http://ashkanfaghihi.dev/posts/floyds-algorithm-intuitive-proof/</link>

@@ -11,14 +11,13 @@ externalLink = ""
 series = []
 +++
 
-# Resources
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes
-
 # Characteristics of the problem
 1. You can't start out with the root (**lowest** common ancestor)
 2. This is really a traversal problem
 3. Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. 
     - Understanding this range means we know the possible children of a node through its value. 
+
+We'll explore the last two towards the end of the blog since these are not as intuitive.
 
 ## You can't start out with the root
 In the constraints of the problem we have the added information that the nodes that we're interested (p and q) are guaranteed to be in the tree. If we try a solution with the root as a candidate it is guaranteed to be an ancestor! However, it will not be the **lowest** common ancestor.
@@ -144,3 +143,8 @@ If a node is the common ancestor then the children nodes can be found: 1. In the
 2. Just in the left subtree
 3. Just in the right subtree
 
+
+# Resources
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes\
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2414941/python-detailed-explanation-easily-understood-o-h-o-n/
+https://stackoverflow.com/a/75379001/8262460\
