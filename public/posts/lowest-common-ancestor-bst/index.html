@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  The Nature of BST nodes (LCA of BST Case Study) · Development from &#34;Scratch&#34;
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Ashkan Faghihi">
+<meta name="description" content="Characteristics of the problem Link to heading You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Nature of BST nodes (LCA of BST Case Study)"/>
+<meta name="twitter:description" content="Characteristics of the problem Link to heading You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive."/>
+
+<meta property="og:title" content="The Nature of BST nodes (LCA of BST Case Study)" />
+<meta property="og:description" content="Characteristics of the problem Link to heading You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-07T09:25:15-08:00" />
+<meta property="article:modified_time" content="2023-02-07T09:25:15-08:00" />
+
+
+
+
+<link rel="canonical" href="http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.109.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Development from &#34;Scratch&#34;
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                
+                
+                
+                
+              
+              <li class="navigation-item">
+                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/">
+              The Nature of BST nodes (LCA of BST Case Study)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-02-07T09:25:15-08:00">
+                February 7, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="characteristics-of-the-problem">
+  Characteristics of the problem
+  <a class="heading-link" href="#characteristics-of-the-problem">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ol>
+<li>You can&rsquo;t start out with the root (<strong>lowest</strong> common ancestor)</li>
+<li>This is really a traversal problem</li>
+<li>Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)].
+<ul>
+<li>Understanding this range means we know the possible children of a node through its value.</li>
+</ul>
+</li>
+</ol>
+<p>We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.</p>
+<h2 id="you-cant-start-out-with-the-root">
+  You can&rsquo;t start out with the root
+  <a class="heading-link" href="#you-cant-start-out-with-the-root">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>In the constraints of the problem we have the added information that the nodes that we&rsquo;re interested (p and q) are guaranteed to be in the tree. If we try a solution with the root as a candidate it is guaranteed to be an ancestor! However, it will not be the <strong>lowest</strong> common ancestor.</p>
+<h1 id="gaining-observations-through-examples">
+  Gaining Observations through examples
+  <a class="heading-link" href="#gaining-observations-through-examples">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p><img src="/images/lca-bst-1.png" alt="image"></p>
+<h2 id="example-1-p--2-q--8">
+  Example 1 (p = 2, q = 8)
+  <a class="heading-link" href="#example-1-p--2-q--8">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>It ends up being that the root is the lowest common ancestor. In this case the lowest common ancestor has found p in in the left subtree and 8 in the right subtree</p>
+<h2 id="example-2-p--0-q--5">
+  Example 2 (p = 0, q = 5)
+  <a class="heading-link" href="#example-2-p--0-q--5">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>We start at the root and see that the nodes we&rsquo;re interested in are not in the right subtree so we can ignore it. We&rsquo;ll just travel left. We see that the left node finds one of the nodes we&rsquo;re interested so that&rsquo;s good.</p>
+<ol>
+<li>Can we stop exploring subtree if you find value?</li>
+</ol>
+<h2 id="example-3-p--4-q--5">
+  Example 3 (p = 4, q = 5)
+  <a class="heading-link" href="#example-3-p--4-q--5">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>One question that came up for me is can you stop exploring a subtree if one of the nodes was found. Let&rsquo;s take this case as an example. We start at the root node and notice that the right subtree doesn&rsquo;t contain p or q.
+Therefore our LCA must be in the left subtree. Looking at node 2, we notice that neither p or q are in the left subtree. Our LCA must be in the right subtree. It was not enough that the node 2 found p.
+We can see q is in the right subtree of node 2 however the reason it does not matter is because 4 counts as a decendant of itself. This was allowed in the problem statement.</p>
+<blockquote>
+<p>we allow a node to be a descendant of itself</p>
+</blockquote>
+<p>If it&rsquo;s a single subtree then the case is actually simple just return the first node we find. In example 3, we can immediately stop as soon as we find that the node we&rsquo;re looking for.
+Remember that we&rsquo;ve explored node two and saw that</p>
+<ol>
+<li>2 != p or q (2 != 4 or 2 != 5)</li>
+<li>We also saw that at node 2, it&rsquo;s left subtree doesn&rsquo;t contain 4 or 5.</li>
+</ol>
+<p>This means that 4 and 5 which we know exists due to the constraint of the question must be in the right subtree. The fact that the left subtree of 2 did not find p or q is important. Since if node 2 did find p or q in its subtree then it would be the LCA.
+However, since it did not find it and then we immediately find it in one of the nodes we&rsquo;re interested in, in node 4 we can stop searching.</p>
+<h2 id="observation">
+  Observation
+  <a class="heading-link" href="#observation">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><img src="/images/lca-bst-1.png" alt="image"></p>
+<p>The LCA will have its decendants in</p>
+<ol>
+<li>Both subtrees</li>
+<li>A single subtree (Example 3)</li>
+</ol>
+<h1 id="using-the-bst-to-our-advantage">
+  Using the BST to our advantage
+  <a class="heading-link" href="#using-the-bst-to-our-advantage">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>In both previoius solutions we&rsquo;re needlessly exploring the whole tree. In the leetcode solution provided they also did not take advantage of the fact that the problem was specifically for Binary Search Trees</p>
+<blockquote>
+<p>As this is BST, as soon as we discover that one value is less (on the left) and another one is more(on the right) than the current node we can say that this is the LCA, without even going through whole tree traversal.</p>
+</blockquote>
+<p>This flips the question into thinking about it as travel to the point in the tree where smallerNode &lt;= node &lt;= largerNode where smallerNode = min(p,q) and largerNode = max(p,q)<br>
+The <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2414941/python-detailed-explanation-easily-understood-o-h-o-n/">algorithm</a> becomes:</p>
+<ol>
+<li>
+<p>min_val &lt;= node.val &lt;= max_val</p>
+<ul>
+<li>It means min_val is inside the left subtree and max_val is inside the right subtree
+-&gt; The LCA is the node</li>
+</ul>
+</li>
+<li>
+<p>min_val &lt; max_val &lt; node.val</p>
+<ul>
+<li>It means min_val and max_val are inside the left subtree
+-&gt; The LCA is inside the left subtree</li>
+</ul>
+</li>
+<li>
+<p>node.val  &gt; max_val  &gt; min_val</p>
+<ul>
+<li>It means min_val and max_val are inside the right subtree
+-&gt; The LCA is inside the right subtree</li>
+</ul>
+</li>
+</ol>
+<h2 id="proving-why-this-is-just-a-traversal-problem">
+  Proving why this is just a traversal problem
+  <a class="heading-link" href="#proving-why-this-is-just-a-traversal-problem">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Even when I understood the fact that a LCA ends up being the point where we find a split in the tree I didn&rsquo;t understand how this changes into becoming a search for the <strong>first node within the range of [smallerNode, largerNode]</strong>. The reason why is because the Binary Search Tree is a specific tree. A split will only occur when we are at a node that has smaller values and larger values. We&rsquo;re looking for specifically the point at which smallerNode and largerNode split off at.</p>
+<p>Let&rsquo;s say we&rsquo;re at a node where min_val &lt;= node.val &lt;= max_val.</p>
+<h3 id="proving-that-it-must-be-the-first-node-that-satisfies-min_val--nodeval--max_val">
+  Proving that it must be the first node that satisfies min_val &lt;= node.val &lt;= max_val.
+  <a class="heading-link" href="#proving-that-it-must-be-the-first-node-that-satisfies-min_val--nodeval--max_val">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Why does it have to be the first node that satisfies the condition?
+Can we have another node that satisfies the same condition be the lower common ancestor?</p>
+<p><img src="/images/lca-bst-1.png" alt="image"></p>
+<p>That would be like finding [0,9]
+If we see start at the root it has a value that satisfies the condition and we can see that the root is the LCA. Let&rsquo;s see if we can go to one of the children node and see if that could be the LCA.
+If we travel to the left node we see that the condition is still true. 0 &lt;= 2 &lt;= 9 however at this point we see that the 9 node is not a decendant of node 2.
+If we travel to the right node we see that the condition is still true. 0 &lt;= 8 &lt;= 9 however at this point we see that the 2 node is not a decendant of node 8.</p>
+<p>It must be the first node we find that satisfies the constraint</p>
+<h2 id="example-3-revisited-p--4-q--5">
+  Example 3 Revisited (p = 4, q = 5)
+  <a class="heading-link" href="#example-3-revisited-p--4-q--5">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>We start at the root which has a value of 6.</p>
+<ol>
+<li>6 is greater than the maxNode so that means that the current root is not a LCA. We need to find a smaller node that is within the range of [4,5]. A smaller node exists in the left subtree since it&rsquo;s a BST. Go to the left subtree</li>
+<li>2 is now too small so the current root is not a LCA. We need to find a larger node that is within the range of [4,5]. A smaller node exists in the left subtree since it&rsquo;s a BST. Go to the left subtree</li>
+<li>Now that we reached 4 we can just return since we found the LCA</li>
+</ol>
+<h1 id="recap--crutial-observations-each-bst-node-has-a-range">
+  Recap / Crutial Observations (Each BST node has a range)
+  <a class="heading-link" href="#recap--crutial-observations-each-bst-node-has-a-range">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Somewhat surprisingly this is just a traversal problem. A node with value X in a BST can have a subtree where the left subtree can contain any value &lt; X and a right subtree where it can contain any value &gt; X.
+Assuming we&rsquo;re just looking a BST that won&rsquo;t be modified, a node of that BST can contain all elements [min(leftSubtree), max(rightSubtree)].
+In this problem we specifically want the element that contains the [smallerNode, largerNode] range.</p>
+<p><img src="/images/lca-bst-1.png" alt="image"></p>
+<ol>
+<li>The relationship is that based off the node&rsquo;s value in a BST we know its <strong>possible</strong> decendants.
+<ul>
+<li>Any node in a BST can contain min(leftSubtree), max(rightSubtree)</li>
+<li>Example: Node 2 can contain [0,5]</li>
+</ul>
+</li>
+<li>We&rsquo;re also told that the decendants must exist in the problem constraints. So if we find a node where its value is within the [smallerNode, largerNode] constraint, then we know that we&rsquo;ve found the LCA
+<ul>
+<li>If we&rsquo;re looking for smallerNode = 3 and largerNode = 5</li>
+</ul>
+</li>
+</ol>
+<p>So we can think of each node having a range. Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the children a node could contain given its range.
+For example if range of Node 2 is [3,5] and we know that a node with value 3 and 5 exist then it must be a child of Node 2.</p>
+<p>Each Node&rsquo;s range is unique. If we know a node&rsquo;s range is [A,B] then the left child and right child of the node would have a different [min(leftSubtree), max(rightSubtree)]</p>
+<h1 id="further-reading">
+  Further Reading
+  <a class="heading-link" href="#further-reading">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="naive-brute-force-recusive-solution">
+  Naive Brute Force Recusive Solution
+  <a class="heading-link" href="#naive-brute-force-recusive-solution">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><a href="https://stackoverflow.com/a/75379001/8262460">https://stackoverflow.com/a/75379001/8262460</a><br>
+At a high level the simplest thing you can do is traverse the entire tree, keep track of your path until you reach p and q.
+In Example 2,</p>
+<p>the path to node 0 is [6,2,0]
+the path to node 5 is [6,2,4,5]</p>
+<p>Since we&rsquo;re looking for the lowest common ancestor we just need to iterate in reverse. Otherwise the root node would always be returned since it&rsquo;s always a LCA.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for node in [0,2,6]:
+</span></span><span style="display:flex;"><span>    if node in [5,4,2,6]:
+</span></span><span style="display:flex;"><span>        return Node
+</span></span></code></pre></div><h2 id="backtracking-solution">
+  Backtracking Solution
+  <a class="heading-link" href="#backtracking-solution">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Intuitively this was the first thing that popped out to me. It&rsquo;s a tree problem so recursion is probably fair game. It involves more decision making than typical recursion so backtracking comes to mind in those cases.
+This form of solution is also not that hard to think out. Given that we attempt the solution after we realize that we need to start</p>
+<p><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes</a></p>
+<p>If a node is the common ancestor then the children nodes can be found: 1. In the left subtree AND right subtree
+2. Just in the left subtree
+3. Just in the right subtree</p>
+<h1 id="resources">
+  Resources
+  <a class="heading-link" href="#resources">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes</a><br>
+<a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2414941/python-detailed-explanation-easily-understood-o-h-o-n/">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2414941/python-detailed-explanation-easily-understood-o-h-o-n/</a>
+<a href="https://stackoverflow.com/a/75379001/8262460">https://stackoverflow.com/a/75379001/8262460</a>\</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Ashkan Faghihi 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
