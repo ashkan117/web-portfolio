@@ -51,7 +51,7 @@ for right in range(minSize - 1,len(string)):
 ```
 My reasoning was that if we have a window with size 3, we want to iterate from index 2 until the len(string)
 
-You can combine the two easily actually.
+Another approach would be to start from the beginning and go until the window
 We know that we want the window size to be minSize so we can just iterate from 0 to len(s) - minSize. For example
 minSize = 3
 len(string) = 5

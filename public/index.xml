@@ -6,7 +6,17 @@
     <description>Recent content on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Feb 2023 09:25:15 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Feb 2023 17:38:45 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Work Smarter not Harder (Part I)</title>
+      <link>http://ashkanfaghihi.dev/posts/maximum-number-occurrances-substring/</link>
+      <pubDate>Thu, 09 Feb 2023 17:38:45 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/maximum-number-occurrances-substring/</guid>
+      <description>Introduction Link to heading After some time working on Leetcode you start to realize trends in the problem. One category that I have recognized is one where the &amp;ldquo;elegant&amp;rdquo; solution uses simple logic to narrow out work.
+Brute Force Link to heading Create a sliding window with the size of minSize. One of the rules that we need to follow is that the number of unique characters &amp;lt; maxLetters. This is easier than you might think.</description>
+    </item>
+    
     <item>
       <title>The Nature of BST nodes (LCA of BST Case Study)</title>
       <link>http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/</link>
