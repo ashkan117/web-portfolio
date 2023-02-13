@@ -1,7 +1,7 @@
 +++ 
-draft = true
+draft = false
 date = 2023-02-12T17:02:24-08:00
-title = ""
+title = "01 Matrix (BFS with multiple sources, solving DP by splitting it into pieces)"
 description = ""
 slug = ""
 authors = []
@@ -191,4 +191,4 @@ After you do the second pass on the cell then we're done and could remove the ma
 0' 1' 0'\
 1' 1  0
 
-We only do it in two passes since it makes iteration doable.
+**We only do it in two passes since it makes iteration doable.**
