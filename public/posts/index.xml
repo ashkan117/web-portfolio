@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Feb 2023 17:02:24 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Mar 2023 09:10:54 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insert Interval</title>
+      <link>http://ashkanfaghihi.dev/posts/insert-interval/</link>
+      <pubDate>Wed, 01 Mar 2023 09:10:54 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/insert-interval/</guid>
+      <description>Introduction Link to heading Today we&amp;rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&amp;rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a finding an index.</description>
+    </item>
+    
     <item>
       <title>01 Matrix (BFS with multiple sources, solving DP by splitting it into pieces)</title>
       <link>http://ashkanfaghihi.dev/posts/01-matrix/</link>

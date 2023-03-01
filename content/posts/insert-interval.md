@@ -65,21 +65,24 @@ The reason I say "we could" instead of "we will" is that you don't know if the e
 then place the interval. We see that our (1,7) becomes (1,9) and since there are no more elements with the possibility of merging we can finally place (1,9).
 
 ## Code Part II (Do we merge? If so how much? Bubble the merges)
+```python
 while i < len(intervals) and intervals[i][0] <= newInterval[1]:
     newInterval[0] = min(intervals[i][0], newInterval[0])
     newInterval[1] = max(intervals[i][1], newInterval[1])
     i += 1
+```
 
 # Insert New Interval (In the case of merging, newInterval = mergedInterval)
 We've finally found the correct place to insert our newInterval, note that in the case of merging we just update newInterval to be the result of **coeallesing**/bubbling all the merges.
 Insert the newInterval/mergedInterval and now we're at a point where we are certain no more merging could happen so insert the rest of the elements
 
 ## Code Part III (Finally insert newInterval/mergedInterval + remainder)
+```python
 res.append(newInterval)
 while i < len(intervals):
     res.append(intervals[i])
     i += 1
-
+```
 
 # Analysis
 Once this loop ends we've done our "sweep" and could now handle the interesting case of 

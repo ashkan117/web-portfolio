@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://ashkanfaghihi.dev/posts/01-matrix/</loc>
-    <lastmod>2023-02-12T17:02:24-08:00</lastmod>
-  </url><url>
     <loc>http://ashkanfaghihi.dev/</loc>
-    <lastmod>2023-02-12T17:02:24-08:00</lastmod>
+    <lastmod>2023-03-01T09:10:54-08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -18,7 +15,13 @@
                 href="http://ashkanfaghihi.dev/"
                 />
   </url><url>
+    <loc>http://ashkanfaghihi.dev/posts/insert-interval/</loc>
+    <lastmod>2023-03-01T09:10:54-08:00</lastmod>
+  </url><url>
     <loc>http://ashkanfaghihi.dev/posts/</loc>
+    <lastmod>2023-03-01T09:10:54-08:00</lastmod>
+  </url><url>
+    <loc>http://ashkanfaghihi.dev/posts/01-matrix/</loc>
     <lastmod>2023-02-12T17:02:24-08:00</lastmod>
   </url><url>
     <loc>http://ashkanfaghihi.dev/posts/maximum-number-occurrances-substring/</loc>
