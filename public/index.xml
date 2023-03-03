@@ -17,15 +17,14 @@
     </item>
     
     <item>
-      <title>01 Matrix (BFS with multiple sources, solving DP by splitting it into pieces)</title>
-      <link>http://ashkanfaghihi.dev/posts/01-matrix/</link>
+      <title>01 Matrix (Solving DP by splitting it into pieces)</title>
+      <link>http://ashkanfaghihi.dev/posts/01-matrix-dp/</link>
       <pubDate>Sun, 12 Feb 2023 17:02:24 -0800</pubDate>
       
-      <guid>http://ashkanfaghihi.dev/posts/01-matrix/</guid>
-      <description>:ROAM_ALIASES: &amp;ldquo;Leetcode 542&amp;rdquo;
-Trouble Link to heading Even if you traverse the node wouldn&amp;rsquo;t you need to traverse the node for every node. For each node we&amp;rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
+      <guid>http://ashkanfaghihi.dev/posts/01-matrix-dp/</guid>
+      <description>Trouble Link to heading Even if you traverse the node wouldn&amp;rsquo;t you need to traverse the node for every node. For each node we&amp;rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
 A Dynamic Programming solution comes into play. Ask your neighbor what is the distance to 0 from you. Pick the neighbor with min distance
-BFS Link to heading What do we do if an answer is not ready?</description>
+DP solution Link to heading Two direction approach We know that we could do the minimum of all 4 directions plus 1.</description>
     </item>
     
     <item>
