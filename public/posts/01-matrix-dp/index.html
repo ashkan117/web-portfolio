@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  01 Matrix (Solving DP by splitting it into pieces) · Development from &#34;Scratch&#34;
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Ashkan Faghihi">
+<meta name="description" content="Trouble Link to heading Even if you traverse the node wouldn&rsquo;t you need to traverse the node for every node. For each node we&rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
+A Dynamic Programming solution comes into play. Ask your neighbor what is the distance to 0 from you. Pick the neighbor with min distance
+DP solution Link to heading Two direction approach We know that we could do the minimum of all 4 directions plus 1.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="01 Matrix (Solving DP by splitting it into pieces)"/>
+<meta name="twitter:description" content="Trouble Link to heading Even if you traverse the node wouldn&rsquo;t you need to traverse the node for every node. For each node we&rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
+A Dynamic Programming solution comes into play. Ask your neighbor what is the distance to 0 from you. Pick the neighbor with min distance
+DP solution Link to heading Two direction approach We know that we could do the minimum of all 4 directions plus 1."/>
+
+<meta property="og:title" content="01 Matrix (Solving DP by splitting it into pieces)" />
+<meta property="og:description" content="Trouble Link to heading Even if you traverse the node wouldn&rsquo;t you need to traverse the node for every node. For each node we&rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
+A Dynamic Programming solution comes into play. Ask your neighbor what is the distance to 0 from you. Pick the neighbor with min distance
+DP solution Link to heading Two direction approach We know that we could do the minimum of all 4 directions plus 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ashkanfaghihi.dev/posts/01-matrix-dp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-12T17:02:24-08:00" />
+<meta property="article:modified_time" content="2023-02-12T17:02:24-08:00" />
+
+
+
+
+<link rel="canonical" href="http://ashkanfaghihi.dev/posts/01-matrix-dp/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Development from &#34;Scratch&#34;
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                
+                
+                
+                
+              
+              <li class="navigation-item">
+                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://ashkanfaghihi.dev/posts/01-matrix-dp/">
+              01 Matrix (Solving DP by splitting it into pieces)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-02-12T17:02:24-08:00">
+                February 12, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="trouble">
+  Trouble
+  <a class="heading-link" href="#trouble">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Even if you traverse the node wouldn&rsquo;t you need to traverse the node for every node.
+For each node we&rsquo;d need to determine the distance by traversing it?
+Multiple traversals are costly</p>
+<p>A Dynamic Programming solution comes into play. Ask your neighbor what is the distance to 0 from you. Pick the neighbor with min distance</p>
+<h1 id="dp-solution">
+  DP solution
+  <a class="heading-link" href="#dp-solution">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Two direction approach
+We know that we could do the minimum of all 4 directions plus 1. The issue that happens is that how do we guarantee that we&rsquo;ve already calculated that distance</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dp[1][2] = 1 + min(
+</span></span><span style="display:flex;"><span>                    dp[0][2] the cell upward
+</span></span><span style="display:flex;"><span>                    dp[2][2] the cell below
+</span></span><span style="display:flex;"><span>                    dp[1][1] the cell left
+</span></span><span style="display:flex;"><span>                    dp[1][3] the cell right
+</span></span><span style="display:flex;"><span>                  )
+</span></span></code></pre></div><p>we can do this by controlling the directions
+If we start from 0,0 then only do the left and down direction we&rsquo;re guaranteed that the previous ones were done
+A detail is that this iteration assumes that the leftmost topmost cell is the minumum value.</p>
+<p>0 0 0<br>
+0 1 0<br>
+1 1 0</p>
+<p>If the element is 0 we don&rsquo;t do any work which makes our dp structure</p>
+<p>0 0 0<br>
+0 X 0<br>
+X X 0</p>
+<p>We&rsquo;re iterating through the matrix starting at 0,0 then nested loop
+0,0 0,1 0,2<br>
+1,0 1,1 1,2<br>
+2,0 2,1 2,0</p>
+<p>So 1,1 depends on left and top which are already available since we&rsquo;re guaranteed to have done 0,1 and 1,0</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dp[1][1] = 1 + min(dp[0][1], dp[1][0])
+</span></span><span style="display:flex;"><span>         = 1 + min(0,0)
+</span></span><span style="display:flex;"><span>         = 1
+</span></span></code></pre></div><p>0 0 0<br>
+0 1 0<br>
+X X 0</p>
+<p><strong>So just look at your cell, determine your value based off who is on top and who is to your left. if No element exists assume infinity</strong></p>
+<p>0 0 0
+0 1 0
+1 2 0</p>
+<p>Now let&rsquo;s do the other two directions
+Assume matrix[len(rows)][len(cols)] is minimum and go from there
+So now we&rsquo;re building off the cell below us and to the right</p>
+<p>Note we&rsquo;re iterating through from reverse so we goes
+If we&rsquo;re doing a nested decrementing loop we visit the pairs in this specific order.
+We only pick two specific directions at a time since that&rsquo;s the way we iterate through the array easily.
+2,2 2,1 2,0
+1,2 1,1 1,0
+0,2 0,1 0,0</p>
+<p><strong>So we&rsquo;re looking below us and to the right at each cell. If no element exists then assume infinity.</strong></p>
+<p>0 0 0
+0 1 0
+1 2 0</p>
+<p>At (2,2) there&rsquo;s nothing below us or to the right so leave alone.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dp[2][1] = 1 + min(dp[2][2], dp[3][1])
+</span></span><span style="display:flex;"><span>         = 1 + min(0,infinity)
+</span></span><span style="display:flex;"><span>         = 1 + 0
+</span></span><span style="display:flex;"><span>         = 1
+</span></span></code></pre></div><p>0 0 0<br>
+0 1 0<br>
+1 1 0</p>
+<p>Notice that the dp[2][1] self corrected. Now we correctly considered all four directions and picked the minumum of those. Now after you place a value in dp[i][j] that is the optimal solution.
+So we&rsquo;re revisiting each cell making sure that we made the right choice now that we&rsquo;re including all directions</p>
+<p>0&rsquo; 0&rsquo; 0&rsquo;<br>
+0&rsquo; 1&rsquo; 0&rsquo;<br>
+1&rsquo; 2&rsquo; 0</p>
+<p>You can assume that this two pass system means that the first pass is marked with a &rsquo; to specify that we&rsquo;re not done yet
+0&rsquo; 0&rsquo; 0&rsquo;<br>
+0&rsquo; 1&rsquo; 0&rsquo;<br>
+1&rsquo; 2&rsquo; 0</p>
+<p>After you do the second pass on the cell then we&rsquo;re done and could remove the mark</p>
+<p>0&rsquo; 0&rsquo; 0&rsquo;<br>
+0&rsquo; 1&rsquo; 0&rsquo;<br>
+1&rsquo; 1  0</p>
+<p><strong>We only do it in two passes since it makes iteration doable.</strong></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Ashkan Faghihi 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

@@ -2,7 +2,8 @@ baseURL = 'http://ashkanfaghihi.dev/'
 languageCode = 'en-us'
 title = 'Development from "Scratch"'
 # theme = 'ananke'
-theme = "hugo-coder"
+# theme = "hugo-coder"
+theme = "kross-hugo"
 
 defaultContentLanguage = "en"
 paginate = 20

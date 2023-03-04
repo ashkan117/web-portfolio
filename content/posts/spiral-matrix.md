@@ -1,7 +1,7 @@
 +++ 
 draft = true
 date = 2023-02-01T08:57:19-08:00
-title = ""
+title = "Spiral Matrix"
 description = ""
 slug = ""
 authors = []
@@ -93,6 +93,7 @@ range(left, right)
 If we need to 
 ## Ending with the right amount of work to be done
 ### Order of the nested loops matter (In the edge case we only want to perform one of the loops)
+
 ```python
 for i in range(left, right):
     res.append(matrix[top][i])

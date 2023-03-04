@@ -28,7 +28,7 @@ Python sorts are guaranteed to be [stable](https://en.wikipedia.org/wiki/Sorting
 
 This seems pointless to know but in fact understanding this is crucial to satisfying the sort requirement of the question. I was able to create a dictionary of the frequencies but had to get it sorted properly.
 
-```json
+```javascript
 {'notebook': 2, 'mouse': 3, 'bin': 1, 'can': 3, 'button': 2}
 ```
 
@@ -95,3 +95,4 @@ TODO REST
 # Resources
 https://docs.python.org/3/howto/sorting.html
 https://en.wikipedia.org/wiki/Sorting_algorithm#Stability
+https://stackoverflow.com/questions/1143671/how-to-sort-objects-by-multiple-keys

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Insert Interval · Development from &#34;Scratch&#34;
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Ashkan Faghihi">
+<meta name="description" content="Introduction Link to heading Today we&rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a finding an index.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Insert Interval"/>
+<meta name="twitter:description" content="Introduction Link to heading Today we&rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a finding an index."/>
+
+<meta property="og:title" content="Insert Interval" />
+<meta property="og:description" content="Introduction Link to heading Today we&rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a finding an index." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ashkanfaghihi.dev/posts/insert-interval/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-01T09:10:54-08:00" />
+<meta property="article:modified_time" content="2023-03-01T09:10:54-08:00" />
+
+
+
+
+<link rel="canonical" href="http://ashkanfaghihi.dev/posts/insert-interval/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Development from &#34;Scratch&#34;
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                
+                
+                
+                
+              
+              <li class="navigation-item">
+                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://ashkanfaghihi.dev/posts/insert-interval/">
+              Insert Interval
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-03-01T09:10:54-08:00">
+                March 1, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Today we&rsquo;ll take a look at <a href="https://leetcode.com/problems/insert-interval/description/">Insert Interval</a>. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a <strong>finding an index</strong>. These sorts of problems are called <a href="https://leetcode.com/discuss/study-guide/2166045/line-sweep-algorithms">line sweep</a></p>
+<p>I wanted to focus on the approach of searching in this post rather than the interval and merging aspect. I may make a post about that in the near future. Also we&rsquo;re solving this problem &ldquo;out of place&rdquo; meaning we will not touch the original intervals array since it gets messier worrying about the changing size of the list.</p>
+<h1 id="finding-the-index-of-the-insert">
+  Finding the index of the insert
+  <a class="heading-link" href="#finding-the-index-of-the-insert">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Once you see this problem as searching for an index of where to insert it&rsquo;s a lot easier to reason about. We just need to put into words how we find the index of this problem. Let&rsquo;s look at the following example case to help.</p>
+<blockquote>
+<p>Input: intervals = [[1,2],[6,9]], newInterval = [3,5]<br>
+Output: [[1,2], [3,5], [6,9]]</p>
+</blockquote>
+<p>In this case we see that there is no merge happening. We can view this as We&rsquo;re iterating through the intervals list and asking ourself can we place the newInterval after the current element we&rsquo;re looking at. If the current_interval finishes fully before our newInterval starts then we know it should placed at that index.</p>
+<p>When we compare (x,2) and (3,y) we see that (x,2) should be placed first because the end of the current interval is &lt; the start of our new interval. <strong>There is no possibility of merge here</strong>
+Next we compare (x,9) and (3,y) we see that the new interval starts before the current interval ends. <strong>This case could have a merge</strong>. We know that x = 6 and y = 3 but let&rsquo;s pretend we didn&rsquo;t. What would we learn about this case.</p>
+<p>Case 1: The x and y really determine whether a merge will happen or not. If x &gt; y then we can see no merge happens.This would be like our current case (6,9) and (3,5).<br>
+Case 2: These two intervals are disjoint and therefore our new interval can be placed fully before the current interval without worrying about merging.
+However if x &lt;= y (5,9) and (3,7) means we merge.</p>
+<blockquote>
+<p>Tip: Viewing the intervals makes it much easier (Credit to Emre Bolat for the pictures, link in resources)</p>
+</blockquote>
+<p><img src="/images/interval-merge-ii.png" alt="image">
+Think of A as the current interval and the new interval as B. In example I it&rsquo;s like case 1 since newInterval does not merge and comes after the current interval. Case 2 is more like 3) since we do merge and additionally we will fully merge.</p>
+<blockquote>
+<p>Observation 1: we&rsquo;re looking for the first index where there is a chance of merging. newInterval[0] &lt;= current_interval[1] (the start of our new interval falls between the current interval&rsquo;s end)</p>
+</blockquote>
+<h2 id="code-part-i-find-insertion-point">
+  Code Part I (Find insertion point)
+  <a class="heading-link" href="#code-part-i-find-insertion-point">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>To code this we can just move to the point where the end of the current interval has no conflict with the start of our new interval.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>i = 0
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">while</span> i &lt; len(intervals) <span style="font-weight:bold">and</span> intervals[i][1] &lt; newInterval[0]:
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic"># current interval&#39;s end = intervals[i][1]</span>
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic"># new interval&#39;s start is = newInterval[0]</span>
+</span></span><span style="display:flex;"><span>    res.append(intervals[i])
+</span></span><span style="display:flex;"><span>    i += 1
+</span></span></code></pre></div><h1 id="do-we-insert-or-merge">
+  Do we insert or merge
+  <a class="heading-link" href="#do-we-insert-or-merge">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>At the end of this loop we&rsquo;re at a point where we want to insert this interval but there is a possibility of merges as we saw in the example cases. One way we can view the insertion
+in this case is to see it as a <strong>merge</strong>.</p>
+<blockquote>
+<p>Input: intervals = [[1,3],[6,9]], newInterval = [2,5]<br>
+Output: [[1,5], [6,9]]</p>
+</blockquote>
+<blockquote>
+<p>Input: intervals = [[1,3],[6,9]], newInterval = [2,7]<br>
+Output: [[1,9]]</p>
+</blockquote>
+<p>We see that we start with N number of elements and in the merge case we will have N or less elements at the end. We see that everything could merge into a single interval too so there is no real need to insert any new elements.
+In the second example we see that we might need to merge multiple times. The way you can view things conceptually is if we notice a merge we&rsquo;re on hold since we could merge again. So if we do see that merge
+our code goes hang on, the interval we want to place is actually wider. For example (1,3) is what we wanted to place but we see that (2,7) merges. So instead of placing (1,3) we could place is (1,7).
+The reason I say &ldquo;we could&rdquo; instead of &ldquo;we will&rdquo; is that you don&rsquo;t know if the element after this would merge too. (6,9) will merge with (1,7) in this case so instead of placing (1,7) just wait until you&rsquo;re done merging
+then place the interval. We see that our (1,7) becomes (1,9) and since there are no more elements with the possibility of merging we can finally place (1,9).</p>
+<h2 id="code-part-ii-do-we-merge-if-so-how-much-bubble-the-merges">
+  Code Part II (Do we merge? If so how much? Bubble the merges)
+  <a class="heading-link" href="#code-part-ii-do-we-merge-if-so-how-much-bubble-the-merges">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="font-weight:bold">while</span> i &lt; len(intervals) <span style="font-weight:bold">and</span> intervals[i][0] &lt;= newInterval[1]:
+</span></span><span style="display:flex;"><span>    newInterval[0] = min(intervals[i][0], newInterval[0])
+</span></span><span style="display:flex;"><span>    newInterval[1] = max(intervals[i][1], newInterval[1])
+</span></span><span style="display:flex;"><span>    i += 1
+</span></span></code></pre></div><h1 id="insert-new-interval-in-the-case-of-merging-newinterval--mergedinterval">
+  Insert New Interval (In the case of merging, newInterval = mergedInterval)
+  <a class="heading-link" href="#insert-new-interval-in-the-case-of-merging-newinterval--mergedinterval">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>We&rsquo;ve finally found the correct place to insert our newInterval, note that in the case of merging we just update newInterval to be the result of <strong>coeallesing</strong>/bubbling all the merges.
+Insert the newInterval/mergedInterval and now we&rsquo;re at a point where we are certain no more merging could happen so insert the rest of the elements</p>
+<h2 id="code-part-iii-finally-insert-newintervalmergedinterval--remainder">
+  Code Part III (Finally insert newInterval/mergedInterval + remainder)
+  <a class="heading-link" href="#code-part-iii-finally-insert-newintervalmergedinterval--remainder">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>res.append(newInterval)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">while</span> i &lt; len(intervals):
+</span></span><span style="display:flex;"><span>    res.append(intervals[i])
+</span></span><span style="display:flex;"><span>    i += 1
+</span></span></code></pre></div><h1 id="analysis">
+  Analysis
+  <a class="heading-link" href="#analysis">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Once this loop ends we&rsquo;ve done our &ldquo;sweep&rdquo; and could now handle the interesting case of
+Reverse Linked List II</p>
+<h1 id="resources">
+  Resources
+  <a class="heading-link" href="#resources">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p><a href="https://emre.me/coding-patterns/merge-intervals/">https://emre.me/coding-patterns/merge-intervals/</a>
+<a href="https://leetcode.com/problems/insert-interval/solutions/1581680/python-easy-solution-two-approaches/">https://leetcode.com/problems/insert-interval/solutions/1581680/python-easy-solution-two-approaches/</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Ashkan Faghihi 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
