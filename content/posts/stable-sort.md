@@ -11,7 +11,7 @@ externalLink = ""
 series = []
 +++
 
-# Introduction
+## Introduction
 Sometimes you learn the hard way in life. Con is that there was a potential cost. On the plus side you will likely not forget it. 
 In today's topic is brought to you by me taking twice as long to complete my interview assessment and potentially failing it for that reason.
 So the questions asked you to program some logic but the order it required you to do it was the challenge. 
@@ -22,7 +22,7 @@ The return array, sorted as required, is ['mouse 2', 'notebook 2', 'keyboard 1']
 
 I had a dictionary of frequencies and was not able to satisfy this sort requirement. Although I have done some nontrivial sorts in Python before I clearly didn't understand them well enough since I was thrown off.
 
-# Solving this with sorted built in and its key argument
+## Why does a sort being stable matter
 
 Python sorts are guaranteed to be [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability). "That means that when multiple records have the same key, their original order is preserved."
 
@@ -32,6 +32,7 @@ This seems pointless to know but in fact understanding this is crucial to satisf
 {'notebook': 2, 'mouse': 3, 'bin': 1, 'can': 3, 'button': 2}
 ```
 
+### Sort by count then by action string
 
 So if we sort the counts by descending order we get, 
 > [mouse 3, can 3, notebook 2, button 2, bin 1]
@@ -69,24 +70,50 @@ We ultimately end up with
 Python performs its sort by continuously comparing the elements until it is in sorted order. It will check is this element less than some other element.
 >"The sort routines use < when making comparisons between two objects. So, it is easy to add a standard sort order to a class by defining an __lt__() method:"
 
-## Now sort by ascending action 
-
 Take the sorted list that we currently have and sort the actions in ascending order
 sorted(sorted_m, key=lambda x: x[0])
 > Output: [('bin', 1), ('button', 2), ('can', 3), ('mouse', 3), ('notebook', 2)]
 
-What that just messed things up completely! Now we have things seemingly flipped. Well Python did what you told it to do. We told it to just sort based off the string now.
-('bin', 1) vs ('mouse', 3)
+What!? That just messed things up completely! Now we have things seemingly flipped. Well Python did what you told it to do. We told it to just sort based off the string now.
+('bin', 1) vs ('mouse', 3) bin comes earlier in the dictionary so it will place ('bin', 1) then ('mouse', 3).
 
-bin comes earlier in the dictionary so it will place ('bin', 1) then ('mouse', 3).
+### Stable sort property incrementally handles the tie cases
 It isn't obvious but notice now though that in case of ties that they are in the right order. 
 can comes before mouse since they both have same count. Button comes before notebook since they also are tied with a count of 2.
 
 That is the nature of a stable sort. 
 
-**Define what you want to happen in the tie first, then do the sort**
+> **Define what you want to happen in the tie first, then do the sort**
 
-TODO REST
+Again it is not obvious but this will scale even if our tuple had more than 2 elements.
+
+> Input: [[1, 'banana', 50], [1, 'banana', 25], [99, 'apple', 72], [23, 'cat', 23], [25, 'cat', 23]]
+
+After sorting based off -x[2]:\
+[[99, 'apple', 72], [1, 'banana', 50], [1, 'banana', 25], [23, 'cat', 23], [25, 'cat', 23]]
+After sorting based off x[1]:\
+[[99, 'apple', 72], [1, 'banana', 50], [1, 'banana', 25], [23, 'cat', 23], [25, 'cat', 23]]
+After sorting based off -x[0]:\
+[[99, 'apple', 72], [25, 'cat', 23], [23, 'cat', 23], [1, 'banana', 50], [1, 'banana', 25]]
+
+This successfully sorts the first element in descending order, the second element by ascending, and finally the last element in descending.
+
+## Sequence Comparison
+There is one last optimization we could do by [understanding sequence comparisons](https://stackoverflow.com/questions/5292303/how-does-tuple-comparison-work-in-python).
+
+> Tuples are compared position by position: the first item of the first tuple is compared to the first item of the second tuple; if they are not equal (i.e. the first is greater or smaller than the second) then that's the result of the comparison, else the second item is considered, then the third and so on.
+
+So instead of doing this ordered way of relying on stable sort we can also do this comparison in a single iteration by relying on the way that tuples can automatically be compared. So something like ("banana": 3) < ("banana", 1) will return False since banana == banana but 3 is not less than 1. 
+
+```python
+sorted(transaction_freq.items(), key=lambda x: (-x[1],x[0]))
+```
+
+Note that it was able to compare the tuple in a reasonable way since all the types match up with each other. Meaning all the items in our tuple (string, number) otherwise this comparison would not work.
+
+Switching it to ("banana", 3) < (1, "banana") returns 
+> TypeError: '<' not supported between instances of 'str' and 'int'
+
 
 
 
