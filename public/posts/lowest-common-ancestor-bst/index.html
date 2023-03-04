@@ -1,184 +1,294 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>
-  The Nature of BST nodes (LCA of BST Case Study) · Development from &#34;Scratch&#34;
-</title>
-    <meta charset="utf-8">
+<html>
+
+<head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.gif type="image/gif">
 
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
 
 
-<meta name="author" content="Ashkan Faghihi">
-<meta name="description" content="Characteristics of the problem Link to heading You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.">
-<meta name="keywords" content="blog,developer,personal">
+<link rel="stylesheet" href="/css/font.css" media="all">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="The Nature of BST nodes (LCA of BST Case Study)"/>
-<meta name="twitter:description" content="Characteristics of the problem Link to heading You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive."/>
+
 
 <meta property="og:title" content="The Nature of BST nodes (LCA of BST Case Study)" />
-<meta property="og:description" content="Characteristics of the problem Link to heading You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive." />
+<meta property="og:description" content="Characteristics of the problem You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.
+You can&rsquo;t start out with the root In the constraints of the problem we have the added information that the nodes that we&rsquo;re interested (p and q) are guaranteed to be in the tree." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-07T09:25:15-08:00" />
-<meta property="article:modified_time" content="2023-02-07T09:25:15-08:00" />
+<meta property="article:modified_time" content="2023-02-07T09:25:15-08:00" /><meta property="og:site_name" content="Development from &#34;Scratch&#34;" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Nature of BST nodes (LCA of BST Case Study)"/>
+<meta name="twitter:description" content="Characteristics of the problem You can&rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.
+You can&rsquo;t start out with the root In the constraints of the problem we have the added information that the nodes that we&rsquo;re interested (p and q) are guaranteed to be in the tree."/>
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
 
 
 
 
-<link rel="canonical" href="http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/">
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
 
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
 
-<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+    html {
+        background-color: var(--background-color) !important;
+    }
 
-
-  
-  
-  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
-
-
-
-
-
-
-  
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
     
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
     
-    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content="">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+The Nature of BST nodes (LCA of BST Case Study) | Development from &#34;Scratch&#34;
+
+  </title>
+</head>
+
+<body class="light">
   
-
-
-
- 
-
-
-
-
-<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
-
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-
-<meta name="generator" content="Hugo 0.110.0">
-
-
-
-
-
-  </head>
-
-
-
-
-
-
-<body class="preload-transitions colorscheme-auto">
   
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
-</div>
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
 
 
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="/">
-      Development from &#34;Scratch&#34;
-    </a>
-    
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Blog</a>
-            </li>
-          
-        
-        
-          
-          
-          
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
             
-          
-            
-              
+            <a class="navbar-brand primary-font text-wrap" href="/">
                 
+                <img src="/fav.gif" width="30" height="30"
+                    class="d-inline-block align-top">
+                Development from &#34;Scratch&#34;
                 
-                
-                
-              
-              <li class="navigation-item">
-                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
-              </li>
-            
-          
-        
-      </ul>
-    
-  </section>
-</nav>
-
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">
-            <a class="title-link" href="http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/">
-              The Nature of BST nodes (LCA of BST Case Study)
             </a>
-          </h1>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder="Ctrl + k"
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder="Ctrl + k" aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#experience"
+                            aria-label="experience">
+                            Experience
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#education"
+                            aria-label="education">
+                            Education
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#projects"
+                            aria-label="projects">
+                            Projects
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#contact"
+                            aria-label="contact">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/posts" title="Blog posts">
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime="2023-02-07T09:25:15-08:00">
-                February 7, 2023
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              8-minute read
-            </span>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">The Nature of BST nodes (LCA of BST Case Study)</h1>
+            <div class="text-center">
+               
+              <small>|</small>
+              Feb 7, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
           </div>
           
-          
-          
-        </div>
-      </header>
-
-      <div class="post-content">
-        
-        <h1 id="characteristics-of-the-problem">
-  Characteristics of the problem
-  <a class="heading-link" href="#characteristics-of-the-problem">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
+          <article class="page-content  p-2">
+          <h1 id="characteristics-of-the-problem">Characteristics of the problem</h1>
 <ol>
 <li>You can&rsquo;t start out with the root (<strong>lowest</strong> common ancestor)</li>
 <li>This is really a traversal problem</li>
@@ -189,48 +299,18 @@
 </li>
 </ol>
 <p>We&rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.</p>
-<h2 id="you-cant-start-out-with-the-root">
-  You can&rsquo;t start out with the root
-  <a class="heading-link" href="#you-cant-start-out-with-the-root">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="you-cant-start-out-with-the-root">You can&rsquo;t start out with the root</h2>
 <p>In the constraints of the problem we have the added information that the nodes that we&rsquo;re interested (p and q) are guaranteed to be in the tree. If we try a solution with the root as a candidate it is guaranteed to be an ancestor! However, it will not be the <strong>lowest</strong> common ancestor.</p>
-<h1 id="gaining-observations-through-examples">
-  Gaining Observations through examples
-  <a class="heading-link" href="#gaining-observations-through-examples">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
+<h1 id="gaining-observations-through-examples">Gaining Observations through examples</h1>
 <p><img src="/images/lca-bst-1.png" alt="image"></p>
-<h2 id="example-1-p--2-q--8">
-  Example 1 (p = 2, q = 8)
-  <a class="heading-link" href="#example-1-p--2-q--8">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="example-1-p--2-q--8">Example 1 (p = 2, q = 8)</h2>
 <p>It ends up being that the root is the lowest common ancestor. In this case the lowest common ancestor has found p in in the left subtree and 8 in the right subtree</p>
-<h2 id="example-2-p--0-q--5">
-  Example 2 (p = 0, q = 5)
-  <a class="heading-link" href="#example-2-p--0-q--5">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="example-2-p--0-q--5">Example 2 (p = 0, q = 5)</h2>
 <p>We start at the root and see that the nodes we&rsquo;re interested in are not in the right subtree so we can ignore it. We&rsquo;ll just travel left. We see that the left node finds one of the nodes we&rsquo;re interested so that&rsquo;s good.</p>
 <ol>
 <li>Can we stop exploring subtree if you find value?</li>
 </ol>
-<h2 id="example-3-p--4-q--5">
-  Example 3 (p = 4, q = 5)
-  <a class="heading-link" href="#example-3-p--4-q--5">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="example-3-p--4-q--5">Example 3 (p = 4, q = 5)</h2>
 <p>One question that came up for me is can you stop exploring a subtree if one of the nodes was found. Let&rsquo;s take this case as an example. We start at the root node and notice that the right subtree doesn&rsquo;t contain p or q.
 Therefore our LCA must be in the left subtree. Looking at node 2, we notice that neither p or q are in the left subtree. Our LCA must be in the right subtree. It was not enough that the node 2 found p.
 We can see q is in the right subtree of node 2 however the reason it does not matter is because 4 counts as a decendant of itself. This was allowed in the problem statement.</p>
@@ -245,26 +325,14 @@ Remember that we&rsquo;ve explored node two and saw that</p>
 </ol>
 <p>This means that 4 and 5 which we know exists due to the constraint of the question must be in the right subtree. The fact that the left subtree of 2 did not find p or q is important. Since if node 2 did find p or q in its subtree then it would be the LCA.
 However, since it did not find it and then we immediately find it in one of the nodes we&rsquo;re interested in, in node 4 we can stop searching.</p>
-<h2 id="observation">
-  Observation
-  <a class="heading-link" href="#observation">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="observation">Observation</h2>
 <p><img src="/images/lca-bst-1.png" alt="image"></p>
 <p>The LCA will have its decendants in</p>
 <ol>
 <li>Both subtrees</li>
 <li>A single subtree (Example 3)</li>
 </ol>
-<h1 id="using-the-bst-to-our-advantage">
-  Using the BST to our advantage
-  <a class="heading-link" href="#using-the-bst-to-our-advantage">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
+<h1 id="using-the-bst-to-our-advantage">Using the BST to our advantage</h1>
 <p>In both previoius solutions we&rsquo;re needlessly exploring the whole tree. In the leetcode solution provided they also did not take advantage of the fact that the problem was specifically for Binary Search Trees</p>
 <blockquote>
 <p>As this is BST, as soon as we discover that one value is less (on the left) and another one is more(on the right) than the current node we can say that this is the LCA, without even going through whole tree traversal.</p>
@@ -294,22 +362,10 @@ The <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-se
 </ul>
 </li>
 </ol>
-<h2 id="proving-why-this-is-just-a-traversal-problem">
-  Proving why this is just a traversal problem
-  <a class="heading-link" href="#proving-why-this-is-just-a-traversal-problem">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="proving-why-this-is-just-a-traversal-problem">Proving why this is just a traversal problem</h2>
 <p>Even when I understood the fact that a LCA ends up being the point where we find a split in the tree I didn&rsquo;t understand how this changes into becoming a search for the <strong>first node within the range of [smallerNode, largerNode]</strong>. The reason why is because the Binary Search Tree is a specific tree. A split will only occur when we are at a node that has smaller values and larger values. We&rsquo;re looking for specifically the point at which smallerNode and largerNode split off at.</p>
 <p>Let&rsquo;s say we&rsquo;re at a node where min_val &lt;= node.val &lt;= max_val.</p>
-<h3 id="proving-that-it-must-be-the-first-node-that-satisfies-min_val--nodeval--max_val">
-  Proving that it must be the first node that satisfies min_val &lt;= node.val &lt;= max_val.
-  <a class="heading-link" href="#proving-that-it-must-be-the-first-node-that-satisfies-min_val--nodeval--max_val">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h3>
+<h3 id="proving-that-it-must-be-the-first-node-that-satisfies-min_val--nodeval--max_val">Proving that it must be the first node that satisfies min_val &lt;= node.val &lt;= max_val.</h3>
 <p>Why does it have to be the first node that satisfies the condition?
 Can we have another node that satisfies the same condition be the lower common ancestor?</p>
 <p><img src="/images/lca-bst-1.png" alt="image"></p>
@@ -318,26 +374,14 @@ If we see start at the root it has a value that satisfies the condition and we c
 If we travel to the left node we see that the condition is still true. 0 &lt;= 2 &lt;= 9 however at this point we see that the 9 node is not a decendant of node 2.
 If we travel to the right node we see that the condition is still true. 0 &lt;= 8 &lt;= 9 however at this point we see that the 2 node is not a decendant of node 8.</p>
 <p>It must be the first node we find that satisfies the constraint</p>
-<h2 id="example-3-revisited-p--4-q--5">
-  Example 3 Revisited (p = 4, q = 5)
-  <a class="heading-link" href="#example-3-revisited-p--4-q--5">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="example-3-revisited-p--4-q--5">Example 3 Revisited (p = 4, q = 5)</h2>
 <p>We start at the root which has a value of 6.</p>
 <ol>
 <li>6 is greater than the maxNode so that means that the current root is not a LCA. We need to find a smaller node that is within the range of [4,5]. A smaller node exists in the left subtree since it&rsquo;s a BST. Go to the left subtree</li>
 <li>2 is now too small so the current root is not a LCA. We need to find a larger node that is within the range of [4,5]. A smaller node exists in the left subtree since it&rsquo;s a BST. Go to the left subtree</li>
 <li>Now that we reached 4 we can just return since we found the LCA</li>
 </ol>
-<h1 id="recap--crutial-observations-each-bst-node-has-a-range">
-  Recap / Crutial Observations (Each BST node has a range)
-  <a class="heading-link" href="#recap--crutial-observations-each-bst-node-has-a-range">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
+<h1 id="recap--crutial-observations-each-bst-node-has-a-range">Recap / Crutial Observations (Each BST node has a range)</h1>
 <p>Somewhat surprisingly this is just a traversal problem. A node with value X in a BST can have a subtree where the left subtree can contain any value &lt; X and a right subtree where it can contain any value &gt; X.
 Assuming we&rsquo;re just looking a BST that won&rsquo;t be modified, a node of that BST can contain all elements [min(leftSubtree), max(rightSubtree)].
 In this problem we specifically want the element that contains the [smallerNode, largerNode] range.</p>
@@ -358,114 +402,282 @@ In this problem we specifically want the element that contains the [smallerNode,
 <p>So we can think of each node having a range. Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the children a node could contain given its range.
 For example if range of Node 2 is [3,5] and we know that a node with value 3 and 5 exist then it must be a child of Node 2.</p>
 <p>Each Node&rsquo;s range is unique. If we know a node&rsquo;s range is [A,B] then the left child and right child of the node would have a different [min(leftSubtree), max(rightSubtree)]</p>
-<h1 id="further-reading">
-  Further Reading
-  <a class="heading-link" href="#further-reading">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
-<h2 id="naive-brute-force-recusive-solution">
-  Naive Brute Force Recusive Solution
-  <a class="heading-link" href="#naive-brute-force-recusive-solution">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h1 id="further-reading">Further Reading</h1>
+<h2 id="naive-brute-force-recusive-solution">Naive Brute Force Recusive Solution</h2>
 <p><a href="https://stackoverflow.com/a/75379001/8262460">https://stackoverflow.com/a/75379001/8262460</a><br>
 At a high level the simplest thing you can do is traverse the entire tree, keep track of your path until you reach p and q.
 In Example 2,</p>
 <p>the path to node 0 is [6,2,0]
 the path to node 5 is [6,2,4,5]</p>
 <p>Since we&rsquo;re looking for the lowest common ancestor we just need to iterate in reverse. Otherwise the root node would always be returned since it&rsquo;s always a LCA.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for node in [0,2,6]:
-</span></span><span style="display:flex;"><span>    if node in [5,4,2,6]:
-</span></span><span style="display:flex;"><span>        return Node
-</span></span></code></pre></div><h2 id="backtracking-solution">
-  Backtracking Solution
-  <a class="heading-link" href="#backtracking-solution">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<pre tabindex="0"><code>for node in [0,2,6]:
+    if node in [5,4,2,6]:
+        return Node
+</code></pre><h2 id="backtracking-solution">Backtracking Solution</h2>
 <p>Intuitively this was the first thing that popped out to me. It&rsquo;s a tree problem so recursion is probably fair game. It involves more decision making than typical recursion so backtracking comes to mind in those cases.
 This form of solution is also not that hard to think out. Given that we attempt the solution after we realize that we need to start</p>
 <p><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes</a></p>
 <p>If a node is the common ancestor then the children nodes can be found: 1. In the left subtree AND right subtree
 2. Just in the left subtree
 3. Just in the right subtree</p>
-<h1 id="resources">
-  Resources
-  <a class="heading-link" href="#resources">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
+<h1 id="resources">Resources</h1>
 <p><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2413331/python-easiest-solution-detailed-graph-explantion-dfs-beginner-friendly/?orderBy=most_votes</a><br>
 <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2414941/python-detailed-explanation-easily-understood-o-h-o-n/">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/2414941/python-detailed-explanation-easily-understood-o-h-o-n/</a>
 <a href="https://stackoverflow.com/a/75379001/8262460">https://stackoverflow.com/a/75379001/8262460</a>\</p>
 
+          </article>
+        </div>
       </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#you-cant-start-out-with-the-root">You can&rsquo;t start out with the root</a></li>
+  </ul>
 
+  <ul>
+    <li><a href="#example-1-p--2-q--8">Example 1 (p = 2, q = 8)</a></li>
+    <li><a href="#example-2-p--0-q--5">Example 2 (p = 0, q = 5)</a></li>
+    <li><a href="#example-3-p--4-q--5">Example 3 (p = 4, q = 5)</a></li>
+    <li><a href="#observation">Observation</a></li>
+  </ul>
 
-      <footer>
-        
+  <ul>
+    <li><a href="#proving-why-this-is-just-a-traversal-problem">Proving why this is just a traversal problem</a>
+      <ul>
+        <li><a href="#proving-that-it-must-be-the-first-node-that-satisfies-min_val--nodeval--max_val">Proving that it must be the first node that satisfies min_val &lt;= node.val &lt;= max_val.</a></li>
+      </ul>
+    </li>
+    <li><a href="#example-3-revisited-p--4-q--5">Example 3 Revisited (p = 4, q = 5)</a></li>
+  </ul>
 
+  <ul>
+    <li><a href="#naive-brute-force-recusive-solution">Naive Brute Force Recusive Solution</a></li>
+    <li><a href="#backtracking-solution">Backtracking Solution</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
 
-        
-        
-        
-        
-      </footer>
-    </article>
+          
 
-    
-  </section>
-
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=The%20Nature%20of%20BST%20nodes%20%28LCA%20of%20BST%20Case%20Study%29&url=http%3a%2f%2fashkanfaghihi.dev%2fposts%2flowest-common-ancestor-bst%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=The%20Nature%20of%20BST%20nodes%20%28LCA%20of%20BST%20Case%20Study%29: http%3a%2f%2fashkanfaghihi.dev%2fposts%2flowest-common-ancestor-bst%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=The%20Nature%20of%20BST%20nodes%20%28LCA%20of%20BST%20Case%20Study%29&amp;body=Check%20out%20this%20site http%3a%2f%2fashkanfaghihi.dev%2fposts%2flowest-common-ancestor-bst%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
 
-    <footer class="footer">
-  <section class="container">
-    ©
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    <div class="container py-3" id="recent-posts">
     
-    2023
-     Ashkan Faghihi 
-    ·
     
-    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
     
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/stable-sort/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Stable Sort = Complex Sort Logic (Draft)">Stable Sort = Complex …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction Sometimes you learn the hard way in life. Con is that there was a potential cost. On the plus side you will likely not forget it. In today&rsquo;s topic is brought to you by me taking twice as long to complete my interview assessment and potentially failing it for that reason. So the …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 2, 2023</span>
+                    <a href="/posts/stable-sort/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/01-matrix-bfs/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="01 Matrix (BFS with multiple sources)">01 Matrix (BFS with …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction We&rsquo;re taking a look at 01 Matrix on Leetcode today. The main motivation is to realize that when using BFS you can start with multiple sources instead of a single source. This just means that even though we usually start out with a &ldquo;root&rdquo; and do BFS from there, you can …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 1, 2023</span>
+                    <a href="/posts/01-matrix-bfs/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/insert-interval/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Insert Interval">Insert Interval</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction Today we&rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 1, 2023</span>
+                    <a href="/posts/insert-interval/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div><div class="text-center pt-2">
+    
+
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="pb-2">
+                <a href="http://ashkanfaghihi.dev/" title="Development from &#34;Scratch&#34;">
+                    <img alt="Footer logo" src="/fav.gif"
+                        height="40px" width="40px">
+                </a>
+            </div>
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                Made with
+                <span class="text-danger">
+                    &#10084;
+                </span>
+                and
+                <a href="https://github.com/gurusabarish/hugo-profile" target="_blank"
+                    title="Designed and developed by gurusabarish">
+                    Hugo Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
   </section>
-</footer>
-
-  </main>
-
-  
-
-  
-  
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 </body>
 
 </html>

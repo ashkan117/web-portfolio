@@ -1,241 +1,1222 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Development from &#34;Scratch&#34;</title>
-    <meta charset="utf-8">
+<html>
+
+<head>
+	<meta name="generator" content="Hugo 0.110.0"><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.gif type="image/gif">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
 
 
 
-
-<meta name="author" content="Ashkan Faghihi">
-<meta name="description" content="Ashkan Faghihi&#39;s personal website">
-<meta name="keywords" content="blog,developer,personal">
+<meta property="og:title" content="Development from &#34;Scratch&#34;" />
+<meta property="og:description" content="Learning in public" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://ashkanfaghihi.dev/" /><meta property="og:site_name" content="Development from &#34;Scratch&#34;" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Development from &#34;Scratch&#34;"/>
-<meta name="twitter:description" content="Ashkan Faghihi&#39;s personal website"/>
-
-<meta property="og:title" content="Development from &#34;Scratch&#34;" />
-<meta property="og:description" content="Ashkan Faghihi&#39;s personal website" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://ashkanfaghihi.dev/" />
+<meta name="twitter:description" content="Learning in public"/>
 
 
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
 
 
-<link rel="canonical" href="http://ashkanfaghihi.dev/">
-
-
-<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
-
-
-  
-  
-  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+<link rel="stylesheet" href="/css/theme.css" media="all">
 
 
 
 
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
 
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
 
-  
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
     
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
     
-    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content=Learning&#32;in&#32;public>
+<link rel="stylesheet" href="/css/index.css" media="all">
+<link rel="stylesheet" href="/css/projects.css" media="all">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+Development from &#34;Scratch&#34;
+
+  </title>
+</head>
+
+<body class="light">
   
-
-
-
- 
-
-
-
-
-<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
-
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Development from "Scratch"" />
-
-
-<meta name="generator" content="Hugo 0.110.0">
-
-
-
-
-
-  </head>
-
-
-
-
-
-
-<body class="preload-transitions colorscheme-auto">
   
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
-</div>
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
 
 
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="/">
-      Development from &#34;Scratch&#34;
-    </a>
-    
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Blog</a>
-            </li>
-          
-        
-        
-          
-          
-          
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
             
-              
+            <a class="navbar-brand primary-font text-wrap" href="/">
                 
+                <img src="/fav.gif" width="30" height="30"
+                    class="d-inline-block align-top">
+                Development from &#34;Scratch&#34;
                 
-                
-                
-              
-              <li class="navigation-item">
-                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
-              </li>
+            </a>
+
             
-          
-        
-      </ul>
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder="Ctrl + k"
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder="Ctrl + k" aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#experience"
+                            aria-label="experience">
+                            Experience
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#education"
+                            aria-label="education">
+                            Education
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#projects"
+                            aria-label="projects">
+                            Projects
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#contact"
+                            aria-label="contact">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/posts" title="Blog posts">
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="hero" class="py-5 align-middle">
+    <div class="container px-3 px-sm-5 px-md-5 px-lg-5 pt-lg-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 content animate" id="primary-font">
+                <span class="subtitle">
+                    Hi, my name is
+                </span>
+                <h2>
+                    Ash
+                </h2>
+                <h3>
+                    I build things and like to learn
+                </h3>
+                <p class="hero-content">
+                    A passionate developer. I post things that I find interesting trying to cater towards intermediate developers. Once you pass the tutorial hell there&rsquo;s a long winded area until you reach senior. I want to add material that is practical for when you want to create real projects.
+                </p>
+                <div class="row">
+                    <div class="col-auto h-100">
+                        
+                        <a href="#" class="btn" download
+			  >
+                            Resume
+                        </a>
+                        
+                    </div>
+                    <div class="col-auto px-0 h-100"><span>
     
-  </section>
-</nav>
-
-
-    <div class="content">
-      
-  <section class="container centered">
-  <div class="about">
+    <span class="px-1">
+        <a href="https://github.com/ashkan117" target="_blank" class="btn social-icon">
+            <i class="fab fa-github"></i>
+        </a>
+    </span>
+    
+    <span class="px-1">
+        <a href="https://www.linkedin.com/in/ashkan-faghihi/" target="_blank" class="btn social-icon">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </span>
+    
+    <span class="px-1">
+        <a href="https://pullscription.com/discover" target="_blank" class="btn social-icon">
+            <i class="fab fa-product-hunt"></i>
+        </a>
+    </span>
     
 
-
-
-    <h1>Ashkan Faghihi</h1>
-
-<h2>Full Stack Developer<br>Life long learner<br></h2>
-
-
-
     
+</span></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-9 pt-5 image animate px-5 px-md-5 px-lg-0 text-center">
+                        <img src="/images/hero.svg"
+                            class="img-thumbnail mx-auto"
+                            alt=""
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-bottom-svg d-md-block d-lg-block d-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="201" height="201" viewBox="0 0 201 201">
+            <g id="Group_1168" data-name="Group 1168" transform="translate(-384 -1392)">
+                <rect id="Rectangle_2206" data-name="Rectangle 2206" width="12" height="2" rx="1"
+                    transform="translate(391 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2271" data-name="Rectangle 2271" width="12" height="2" rx="1"
+                    transform="translate(391 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2238" data-name="Rectangle 2238" width="12" height="2" rx="1"
+                    transform="translate(391 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2278" data-name="Rectangle 2278" width="12" height="2" rx="1"
+                    transform="translate(391 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2222" data-name="Rectangle 2222" width="12" height="2" rx="1"
+                    transform="translate(391 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2272" data-name="Rectangle 2272" width="12" height="2" rx="1"
+                    transform="translate(391 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2241" data-name="Rectangle 2241" width="12" height="2" rx="1"
+                    transform="translate(391 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2288" data-name="Rectangle 2288" width="12" height="2" rx="1"
+                    transform="translate(391 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2214" data-name="Rectangle 2214" width="12" height="2" rx="1"
+                    transform="translate(499 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2289" data-name="Rectangle 2289" width="12" height="2" rx="1"
+                    transform="translate(499 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2256" data-name="Rectangle 2256" width="12" height="2" rx="1"
+                    transform="translate(499 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2290" data-name="Rectangle 2290" width="12" height="2" rx="1"
+                    transform="translate(499 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2231" data-name="Rectangle 2231" width="12" height="2" rx="1"
+                    transform="translate(499 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2291" data-name="Rectangle 2291" width="12" height="2" rx="1"
+                    transform="translate(499 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2257" data-name="Rectangle 2257" width="12" height="2" rx="1"
+                    transform="translate(499 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2292" data-name="Rectangle 2292" width="12" height="2" rx="1"
+                    transform="translate(499 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2210" data-name="Rectangle 2210" width="12" height="2" rx="1"
+                    transform="translate(445 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2279" data-name="Rectangle 2279" width="12" height="2" rx="1"
+                    transform="translate(445 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2248" data-name="Rectangle 2248" width="12" height="2" rx="1"
+                    transform="translate(445 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2280" data-name="Rectangle 2280" width="12" height="2" rx="1"
+                    transform="translate(445 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2226" data-name="Rectangle 2226" width="12" height="2" rx="1"
+                    transform="translate(445 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2281" data-name="Rectangle 2281" width="12" height="2" rx="1"
+                    transform="translate(445 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2249" data-name="Rectangle 2249" width="12" height="2" rx="1"
+                    transform="translate(445 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2293" data-name="Rectangle 2293" width="12" height="2" rx="1"
+                    transform="translate(445 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2219" data-name="Rectangle 2219" width="12" height="2" rx="1"
+                    transform="translate(553 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2310" data-name="Rectangle 2310" width="12" height="2" rx="1"
+                    transform="translate(553 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2262" data-name="Rectangle 2262" width="12" height="2" rx="1"
+                    transform="translate(553 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2311" data-name="Rectangle 2311" width="12" height="2" rx="1"
+                    transform="translate(553 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2232" data-name="Rectangle 2232" width="12" height="2" rx="1"
+                    transform="translate(553 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2312" data-name="Rectangle 2312" width="12" height="2" rx="1"
+                    transform="translate(553 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2263" data-name="Rectangle 2263" width="12" height="2" rx="1"
+                    transform="translate(553 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2313" data-name="Rectangle 2313" width="12" height="2" rx="1"
+                    transform="translate(553 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2209" data-name="Rectangle 2209" width="12" height="2" rx="1"
+                    transform="translate(418 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2273" data-name="Rectangle 2273" width="12" height="2" rx="1"
+                    transform="translate(418 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2242" data-name="Rectangle 2242" width="12" height="2" rx="1"
+                    transform="translate(418 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2282" data-name="Rectangle 2282" width="12" height="2" rx="1"
+                    transform="translate(418 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2223" data-name="Rectangle 2223" width="12" height="2" rx="1"
+                    transform="translate(418 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2274" data-name="Rectangle 2274" width="12" height="2" rx="1"
+                    transform="translate(418 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2243" data-name="Rectangle 2243" width="12" height="2" rx="1"
+                    transform="translate(418 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2294" data-name="Rectangle 2294" width="12" height="2" rx="1"
+                    transform="translate(418 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2217" data-name="Rectangle 2217" width="12" height="2" rx="1"
+                    transform="translate(526 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2314" data-name="Rectangle 2314" width="12" height="2" rx="1"
+                    transform="translate(526 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2258" data-name="Rectangle 2258" width="12" height="2" rx="1"
+                    transform="translate(526 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2315" data-name="Rectangle 2315" width="12" height="2" rx="1"
+                    transform="translate(526 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2233" data-name="Rectangle 2233" width="12" height="2" rx="1"
+                    transform="translate(526 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2316" data-name="Rectangle 2316" width="12" height="2" rx="1"
+                    transform="translate(526 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2259" data-name="Rectangle 2259" width="12" height="2" rx="1"
+                    transform="translate(526 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2317" data-name="Rectangle 2317" width="12" height="2" rx="1"
+                    transform="translate(526 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2211" data-name="Rectangle 2211" width="12" height="2" rx="1"
+                    transform="translate(472 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2295" data-name="Rectangle 2295" width="12" height="2" rx="1"
+                    transform="translate(472 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2250" data-name="Rectangle 2250" width="12" height="2" rx="1"
+                    transform="translate(472 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2296" data-name="Rectangle 2296" width="12" height="2" rx="1"
+                    transform="translate(472 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2227" data-name="Rectangle 2227" width="12" height="2" rx="1"
+                    transform="translate(472 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2297" data-name="Rectangle 2297" width="12" height="2" rx="1"
+                    transform="translate(472 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2251" data-name="Rectangle 2251" width="12" height="2" rx="1"
+                    transform="translate(472 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2298" data-name="Rectangle 2298" width="12" height="2" rx="1"
+                    transform="translate(472 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2221" data-name="Rectangle 2221" width="12" height="2" rx="1"
+                    transform="translate(580 1392) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2318" data-name="Rectangle 2318" width="12" height="2" rx="1"
+                    transform="translate(580 1500) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2264" data-name="Rectangle 2264" width="12" height="2" rx="1"
+                    transform="translate(580 1446) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2319" data-name="Rectangle 2319" width="12" height="2" rx="1"
+                    transform="translate(580 1554) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2236" data-name="Rectangle 2236" width="12" height="2" rx="1"
+                    transform="translate(580 1419) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2320" data-name="Rectangle 2320" width="12" height="2" rx="1"
+                    transform="translate(580 1527) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2265" data-name="Rectangle 2265" width="12" height="2" rx="1"
+                    transform="translate(580 1473) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2321" data-name="Rectangle 2321" width="12" height="2" rx="1"
+                    transform="translate(580 1581) rotate(90)" fill="#282f49" />
+                <rect id="Rectangle_2207" data-name="Rectangle 2207" width="12" height="2" rx="1"
+                    transform="translate(396 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2270" data-name="Rectangle 2270" width="12" height="2" rx="1"
+                    transform="translate(396 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2239" data-name="Rectangle 2239" width="12" height="2" rx="1"
+                    transform="translate(396 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2283" data-name="Rectangle 2283" width="12" height="2" rx="1"
+                    transform="translate(396 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2224" data-name="Rectangle 2224" width="12" height="2" rx="1"
+                    transform="translate(396 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2275" data-name="Rectangle 2275" width="12" height="2" rx="1"
+                    transform="translate(396 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2244" data-name="Rectangle 2244" width="12" height="2" rx="1"
+                    transform="translate(396 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2299" data-name="Rectangle 2299" width="12" height="2" rx="1"
+                    transform="translate(396 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2215" data-name="Rectangle 2215" width="12" height="2" rx="1"
+                    transform="translate(504 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2300" data-name="Rectangle 2300" width="12" height="2" rx="1"
+                    transform="translate(504 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2252" data-name="Rectangle 2252" width="12" height="2" rx="1"
+                    transform="translate(504 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2301" data-name="Rectangle 2301" width="12" height="2" rx="1"
+                    transform="translate(504 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2228" data-name="Rectangle 2228" width="12" height="2" rx="1"
+                    transform="translate(504 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2302" data-name="Rectangle 2302" width="12" height="2" rx="1"
+                    transform="translate(504 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2253" data-name="Rectangle 2253" width="12" height="2" rx="1"
+                    transform="translate(504 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2303" data-name="Rectangle 2303" width="12" height="2" rx="1"
+                    transform="translate(504 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2212" data-name="Rectangle 2212" width="12" height="2" rx="1"
+                    transform="translate(450 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2284" data-name="Rectangle 2284" width="12" height="2" rx="1"
+                    transform="translate(450 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2245" data-name="Rectangle 2245" width="12" height="2" rx="1"
+                    transform="translate(450 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2285" data-name="Rectangle 2285" width="12" height="2" rx="1"
+                    transform="translate(450 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2229" data-name="Rectangle 2229" width="12" height="2" rx="1"
+                    transform="translate(450 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2286" data-name="Rectangle 2286" width="12" height="2" rx="1"
+                    transform="translate(450 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2246" data-name="Rectangle 2246" width="12" height="2" rx="1"
+                    transform="translate(450 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2304" data-name="Rectangle 2304" width="12" height="2" rx="1"
+                    transform="translate(450 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2218" data-name="Rectangle 2218" width="12" height="2" rx="1"
+                    transform="translate(558 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2322" data-name="Rectangle 2322" width="12" height="2" rx="1"
+                    transform="translate(558 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2266" data-name="Rectangle 2266" width="12" height="2" rx="1"
+                    transform="translate(558 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2323" data-name="Rectangle 2323" width="12" height="2" rx="1"
+                    transform="translate(558 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2234" data-name="Rectangle 2234" width="12" height="2" rx="1"
+                    transform="translate(558 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2324" data-name="Rectangle 2324" width="12" height="2" rx="1"
+                    transform="translate(558 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2267" data-name="Rectangle 2267" width="12" height="2" rx="1"
+                    transform="translate(558 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2325" data-name="Rectangle 2325" width="12" height="2" rx="1"
+                    transform="translate(558 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2208" data-name="Rectangle 2208" width="12" height="2" rx="1"
+                    transform="translate(423 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2276" data-name="Rectangle 2276" width="12" height="2" rx="1"
+                    transform="translate(423 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2240" data-name="Rectangle 2240" width="12" height="2" rx="1"
+                    transform="translate(423 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2287" data-name="Rectangle 2287" width="12" height="2" rx="1"
+                    transform="translate(423 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2225" data-name="Rectangle 2225" width="12" height="2" rx="1"
+                    transform="translate(423 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2277" data-name="Rectangle 2277" width="12" height="2" rx="1"
+                    transform="translate(423 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2247" data-name="Rectangle 2247" width="12" height="2" rx="1"
+                    transform="translate(423 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2305" data-name="Rectangle 2305" width="12" height="2" rx="1"
+                    transform="translate(423 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2216" data-name="Rectangle 2216" width="12" height="2" rx="1"
+                    transform="translate(531 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2326" data-name="Rectangle 2326" width="12" height="2" rx="1"
+                    transform="translate(531 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2260" data-name="Rectangle 2260" width="12" height="2" rx="1"
+                    transform="translate(531 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2327" data-name="Rectangle 2327" width="12" height="2" rx="1"
+                    transform="translate(531 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2235" data-name="Rectangle 2235" width="12" height="2" rx="1"
+                    transform="translate(531 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2328" data-name="Rectangle 2328" width="12" height="2" rx="1"
+                    transform="translate(531 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2261" data-name="Rectangle 2261" width="12" height="2" rx="1"
+                    transform="translate(531 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2329" data-name="Rectangle 2329" width="12" height="2" rx="1"
+                    transform="translate(531 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2213" data-name="Rectangle 2213" width="12" height="2" rx="1"
+                    transform="translate(477 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2306" data-name="Rectangle 2306" width="12" height="2" rx="1"
+                    transform="translate(477 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2254" data-name="Rectangle 2254" width="12" height="2" rx="1"
+                    transform="translate(477 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2307" data-name="Rectangle 2307" width="12" height="2" rx="1"
+                    transform="translate(477 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2230" data-name="Rectangle 2230" width="12" height="2" rx="1"
+                    transform="translate(477 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2308" data-name="Rectangle 2308" width="12" height="2" rx="1"
+                    transform="translate(477 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2255" data-name="Rectangle 2255" width="12" height="2" rx="1"
+                    transform="translate(477 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2309" data-name="Rectangle 2309" width="12" height="2" rx="1"
+                    transform="translate(477 1588) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2220" data-name="Rectangle 2220" width="12" height="2" rx="1"
+                    transform="translate(585 1399) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2330" data-name="Rectangle 2330" width="12" height="2" rx="1"
+                    transform="translate(585 1507) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2268" data-name="Rectangle 2268" width="12" height="2" rx="1"
+                    transform="translate(585 1453) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2331" data-name="Rectangle 2331" width="12" height="2" rx="1"
+                    transform="translate(585 1561) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2237" data-name="Rectangle 2237" width="12" height="2" rx="1"
+                    transform="translate(585 1426) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2332" data-name="Rectangle 2332" width="12" height="2" rx="1"
+                    transform="translate(585 1534) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2269" data-name="Rectangle 2269" width="12" height="2" rx="1"
+                    transform="translate(585 1480) rotate(-180)" fill="#282f49" />
+                <rect id="Rectangle_2333" data-name="Rectangle 2333" width="12" height="2" rx="1"
+                    transform="translate(585 1588) rotate(-180)" fill="#282f49" />
+            </g>
+        </svg>
+    </div>
+</section>
+
+<section id="about" class="py-0 py-sm-5">
+    <div class="container bg-transparent">
+        <h3 class="text-center bg-transparent">About Me</h3>
+        <div class="bg-transparent row justify-content-center px-3 py-5">
+            
+            <div class="col-sm-12 col-md-12 col-lg-8 content">
+                <p>Welcome to my page. How you got here I have no clue but I hope it can be of service to you in some way. My goal for this page is to discuss some concepts that I think are of value. Short and sweet posts that expand or introduce you to topics that I stumbled on. After some time I&rsquo;ve learned to avoid some websites like medium since they end up beating some topics to death. I don&rsquo;t want this to be what I do. There are already amazing resources and any topic so I will only make posts that I haven&rsquo;t seen or posts on a new angle that I don&rsquo;t believe was talked about yet with the exception of programming interview questions.</p>
+<p>I started this blog after being laid off from my first job during the wave of tech layoffs in 2022. So it will likely be a place where I journal my process through the programming interview. Any leetcode related blogs won&rsquo;t be of insane value but I do my best to only put down importnant nuggets or as a collection of things I have found useful.</p>
+<p>These are ultimately my ramblings. I am not sure how many, if any, eyes will see this so I don&rsquo;t want to spend too much effort on it yet. However, if actual eyes are viewing this and they have thoughts, questions, or concerns; please reach out.</p>
+<p><a href="mailto:ashkanfaghihi@gmail.com">ashkanfaghihi@gmail.com</a></p>
+
+
+                
+                Here are a few technologies I&#39;ve been working with recently:
+                <ul>
+                    
+                    <li>Python</li>
+                    
+                    <li>TypeScript</li>
+                    
+                    <li>JavaScript</li>
+                    
+                    <li>VueJS</li>
+                    
+                    <li>Nuxt</li>
+                    
+                    <li>React</li>
+                    
+                    <li>NodeJS</li>
+                    
+                    <li>ExpressJS</li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="py-5">
+    <div class="container">
+        <h3 class="text-center">Experience</h3>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8 py-5">
+                <div class="experience-container px-3 pt-2">
+                    <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">
+                        
+                        
+                        <li class="nav-item px-1 bg-transparent" role="presentation">
+                            <div 
+                                class="nav-link active bg-transparent" 
+                                aria-selected="true" 
+                                role="tab" 
+                                data-bs-toggle="pill"
+                                id='Pullscription-June-2021---present-tab'
+                                data-bs-target='#pills-Pullscription-June-2021---present'
+                                aria-controls='Pullscription-June-2021---present' 
+                            >
+                                Pullscription
+                            </div>
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item px-1 bg-transparent" role="presentation">
+                            <div 
+                                class="nav-link bg-transparent" 
+                                aria-selected="true" 
+                                role="tab" 
+                                data-bs-toggle="pill"
+                                id='Navis-Aug-2021---Jan-2023-tab'
+                                data-bs-target='#pills-Navis-Aug-2021---Jan-2023' 
+                                aria-controls='Navis-Aug-2021---Jan-2023'
+                            >
+                                Navis
+                            </div>
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item px-1 bg-transparent" role="presentation">
+                            <div 
+                                class="nav-link bg-transparent" 
+                                aria-selected="true" 
+                                role="tab" 
+                                data-bs-toggle="pill"
+                                id='HRL-Labratories-May-2020---Sep-2020-tab'
+                                data-bs-target='#pills-HRL-Labratories-May-2020---Sep-2020' 
+                                aria-controls='HRL-Labratories-May-2020---Sep-2020'
+                            >
+                                HRL Labratories
+                            </div>
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item px-1 bg-transparent" role="presentation">
+                            <div 
+                                class="nav-link bg-transparent" 
+                                aria-selected="true" 
+                                role="tab" 
+                                data-bs-toggle="pill"
+                                id='Giftz-Sep-2018---Nov-2018-tab'
+                                data-bs-target='#pills-Giftz-Sep-2018---Nov-2018' 
+                                aria-controls='Giftz-Sep-2018---Nov-2018'
+                            >
+                                Giftz
+                            </div>
+                        </li>
+                        
+                        
+                    </ul>
+                    <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
+                        
+                        
+                        <div 
+                            class="tab-pane fade show active bg-transparent" 
+                            role="tabpanel"
+                            id='pills-Pullscription-June-2021---present'
+                            aria-labelledby='pills-Pullscription-June-2021---present-tab'
+                        >
+                            <div>
+                                <span class="h4">Fullstack Engineeer</span>
+                                <small>-</small>
+                                <a href="www.pullscription.com" target="_blank">Pullscription</a>
+                                <div class="pb-1">
+                                    <small>June 2021 - present</small>
+                                    
+                                    <span class="p-2">
+                                        <span 
+                                            style="cursor: pointer;" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-placement="top" 
+                                            data-bs-original-title=Working&#32;as&#32;a&#32;Fullstack&#32;Engineeer&#32;at&#32;Pullscription
+                                        >
+                                            <i class="fas fa-info-circle fa-xs"></i>
+                                        </span>
+                                    </span>
+                                    
+                                </div>
+
+                                
+                                <div class="py-2 featuredLink">
+                                    <a class="p-2 px-4 btn btn-outline-primary btn-sm" href=www.pullscription.com target="_blank">
+                                        View the project 
+                                    </a>
+                                </div>
+                                
+                            </div>
+
+                            <p>I am currently co-founding my own company at <a href="https://www.pullscription.com">Pullscription</a> where I work as a full stack developer. We want to bring tools to comic book store owners so that they can focus on their customers and maximize their profits in a more modern way.</p>
 <ul>
-  
-    
-      <li>
-        <a href="https://github.com/ashkan117" aria-label="Github"   >
-          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
-        </a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="https://www.linkedin.com/in/ashkan-faghihi/" aria-label="LinkedIn"   >
-          <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
-        </a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="https://pullscription.com/discover" aria-label="Pullscription"   >
-          <i class="fa fa-2x fa-product-hunt" aria-hidden="true"></i>
-        </a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="mailto:ashkanfaghihi@gmail.com" aria-label="Email"   >
-          <i class="fa fa-2x fa-envelope" aria-hidden="true"></i>
-        </a>
-      </li>
-    
-  
+<li>Created a responsive website for comic book store owners using mobile-first principles with VueJS, HTML, and CSS Architected data ingestion pipelines to handle ~10K/month comic book data entries into MySQL database and AWS S3</li>
+<li>Designed and implemented scalable RESTful API for backend using TypeScript while maintaining 80% test coverage</li>
+<li>Mentored team of 4 junior developers to build administrative facing tools to assist comic store owners to manage customer data</li>
 </ul>
 
-  </div>
+                        </div>
+                        
+                        
+                        
+                        <div 
+                            class="tab-pane fade bg-transparent" 
+                            role="tabpanel"
+                            id='pills-Navis-Aug-2021---Jan-2023'
+                            aria-labelledby='pills-Navis-Aug-2021---Jan-2023-tab'
+                        >
+                            <div>
+                                <span class="h4">Software Engineer - Test Automation</span>
+                                <small>-</small>
+                                <a href="https://navis.com" target="_blank">Navis</a>
+                                
+                                <div class="pb-1">
+                                    <small>Aug 2021 - Jan 2023</small>
+                                    
+                                    <span class="p-2">
+                                        <span 
+                                            style="cursor: pointer;" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-placement="top" 
+                                            data-bs-original-title=Worked&#32;as&#32;a&#32;Software&#32;Engineer&#32;-&#32;Test&#32;Automation&#32;at&#32;Navis
+                                        > 
+                                            <i class="fas fa-info-circle fa-xs"></i>
+                                        </span>
+                                    </span>
+                                    
+                                </div>
+                                
+                                
+                            </div>
 
-  
+                            <div class="pt-2">
+                                <p>I worked as a software engineer with a focus in testing. With contracts worth upwards of a million dollars there is no room for errors. I made sure that features worked as expected while creating tools and infrastructure to simplify this process.</p>
+<ul>
+<li>Decreased scheduler runtime by 50% while reducing the hardware footprint for crane related scheduling by 50%</li>
+<li>Eliminated 1000+ unnecessary truck trips for shipping terminals through upgrading scheduling algorithms</li>
+<li>Created CLI to simplify development environment builds and reduced startup by 50%</li>
+<li>Improved test automation coverage for customer-specific apps using Groovy while enhancing proprietary automation framework</li>
+</ul>
 
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div 
+                            class="tab-pane fade bg-transparent" 
+                            role="tabpanel"
+                            id='pills-HRL-Labratories-May-2020---Sep-2020'
+                            aria-labelledby='pills-HRL-Labratories-May-2020---Sep-2020-tab'
+                        >
+                            <div>
+                                <span class="h4">Software Engineer Intern</span>
+                                <small>-</small>
+                                <a href="https://hrl.com" target="_blank">HRL Labratories</a>
+                                
+                                <div class="pb-1">
+                                    <small>May 2020 - Sep 2020</small>
+                                    
+                                </div>
+                                
+                                
+                            </div>
+
+                            <div class="pt-2">
+                                <p>At HRL my focus was investigating projects to capitalize on predictive AI modern research.</p>
+<ul>
+<li>Developed communication interface to allow transactions between critical modules by using ZeroMQ and Google Protobufs</li>
+<li>Researched and implemented a task-embedding language using Python to interact with a predictive AI component</li>
+<li>Simplified UI designs to better display results of machine-learning agents on small screen device using PyQt5</li>
+</ul>
+
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div 
+                            class="tab-pane fade bg-transparent" 
+                            role="tabpanel"
+                            id='pills-Giftz-Sep-2018---Nov-2018'
+                            aria-labelledby='pills-Giftz-Sep-2018---Nov-2018-tab'
+                        >
+                            <div>
+                                <span class="h4">Software Engineer Intern (Android)</span>
+                                <small>-</small>
+                                <a href="https://giftz.com" target="_blank">Giftz</a>
+                                
+                                <div class="pb-1">
+                                    <small>Sep 2018 - Nov 2018</small>
+                                    
+                                    <span class="p-2">
+                                        <span 
+                                            style="cursor: pointer;" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-placement="top" 
+                                            data-bs-original-title=Worked&#32;as&#32;a&#32;Software&#32;Engineer&#32;Intern&#32;(Android)&#32;at&#32;Giftz
+                                        > 
+                                            <i class="fas fa-info-circle fa-xs"></i>
+                                        </span>
+                                    </span>
+                                    
+                                </div>
+                                
+                                
+                            </div>
+
+                            <div class="pt-2">
+                                <p>I was soley responsible for updating the Giftz team mobile application. It was a great experience learning about how to work with legacy code. Making sure you can refactor code without wasting time rebuilding too much from scratch.</p>
+<ul>
+<li>Revamped mobile application for fast-paced startup which was awarded Pepperdine Business’ 19-20 most fundable company</li>
+<li>Decreased redundant code by 10% and increased maintainability by utilizing MVVM architectural pattern</li>
+<li>Redesigned UI to be more intuitive and minimal while maintaining 20K+ line Java codebase</li>
+</ul>
+
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
+<section id="education" class="py-5">
+    <div class="container">
+        <h3 class="text-center">Education</h3>
+        <div class="row justify-content-center py-5">
+            
+            
+            <div class="col-12 p-0">
+                <div class="row row align-items-center justify-content-center m-1 mb-4">
+                    
+
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-end">
+                                    <small>2018 - 2021</small>
+                                </div>
+                                <h5 class="card-title">Bachelor of Computer Science</h5>
+                                
+                                
+                                University of California, Los Angeles
+                                
+
+                                
+                                <div class="py-1">
+                                    GPA:
+                                    <i>
+                                        <small>3.33 out of 4.0</small>
+                                    </i> 
+                                </div>
+                                
+                                <div class="py-1 education-content">
+                                    
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 p-0">
+                <div class="row row align-items-center justify-content-center m-1 mb-4">
+                    
+
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-end">
+                                    <small>2014 - 2018</small>
+                                </div>
+                                <h5 class="card-title">Associates in Technology</h5>
+                                
+                                
+                                Pierce Community College
+                                
+
+                                
+                                <div class="py-1">
+                                    GPA:
+                                    <i>
+                                        <small>4.0 out of 4.0</small>
+                                    </i> 
+                                </div>
+                                
+                                <div class="py-1 education-content">
+                                    
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
+</section>
 
-    <footer class="footer">
-  <section class="container">
-    ©
+
+<section id="projects" class="py-5">
+    <div class="container">
+        <h3 class="text-center">Projects</h3>
+        <div class="row justify-content-center px-3 px-md-5">
+            
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card my-3 h-100" title="Pullscription">
+                    <div class="card-head">
+                        <img class="card-img-top" src="/images/pullscription-logo.png" alt="Pullscription">
+                    </div>
+                    <div class="card-body bg-transparent p-3">
+                        <div class="pb-2 bg-transparent">
+                            
+                            <span class="badge badge-secondary">VueJS</span>
+                            
+                            <span class="badge badge-secondary">TypeScript</span>
+                            
+                            <span class="badge badge-secondary">Python</span>
+                            
+                            <span class="badge badge-secondary">NodeJS</span>
+                            
+                        </div>
+                        <h5 class="card-title bg-transparent mt-1">Pullscription</h5>
+                        <div class="card-text bg-transparent secondary-font">
+                            We want to bring tools to comic book store owners so that they can focus on their customers and maximize their profits in a more modern way.
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer py-3">
+                        
+                        
+                        <span class="float-end">
+                            <a class="btn btn-sm" href="https://pullscription.com" target="_blank">
+                                Site
+                            </a>
+                        </span>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card my-3 h-100" title="Educational Videos">
+                    <div class="card-head">
+                        <img class="card-img-top" src="/images/pass-by-value.gif" alt="Educational Videos">
+                    </div>
+                    <div class="card-body bg-transparent p-3">
+                        <div class="pb-2 bg-transparent">
+                            
+                            <span class="badge badge-secondary">Python</span>
+                            
+                            <span class="badge badge-secondary">Manim</span>
+                            
+                        </div>
+                        <h5 class="card-title bg-transparent mt-1">Educational Videos</h5>
+                        <div class="card-text bg-transparent secondary-font">
+                            Using 3Blue1Brown inspired manim library to visualize concepts
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer py-3">
+                        
+                        <span class="m-1 mx-2">
+                            <a href="https://github.com/manim-projects" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </span>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5">
+    <div class="container">
+        <h3 class="text-center">Get in Touch</h3>
+        <div class="px-0 px-md-5 px-lg-5">
+            <div class="row justify-content-center px-md-5">
+                <div class="col-md-8 py-3">
+                    <div class="text-center">
+                        My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+                    </div>
+                    
+                    <div class="text-center pt-3">
+                        <a href="mailto:ashkanfaghihi@gmail.com" class="btn">
+                            Mail me
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact-form-status"></div>
+</section>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+  <symbol id="info-fill" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </symbol>
+  <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+</svg>
+
+  </div><footer>
+    <div class="container py-3" id="recent-posts">
     
-    2023
-     Ashkan Faghihi 
-    ·
     
-    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
     
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/stable-sort/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Stable Sort = Complex Sort Logic (Draft)">Stable Sort = Complex …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction Sometimes you learn the hard way in life. Con is that there was a potential cost. On the plus side you will likely not forget it. In today&rsquo;s topic is brought to you by me taking twice as long to complete my interview assessment and potentially failing it for that reason. So the …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 2, 2023</span>
+                    <a href="/posts/stable-sort/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/01-matrix-bfs/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="01 Matrix (BFS with multiple sources)">01 Matrix (BFS with …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction We&rsquo;re taking a look at 01 Matrix on Leetcode today. The main motivation is to realize that when using BFS you can start with multiple sources instead of a single source. This just means that even though we usually start out with a &ldquo;root&rdquo; and do BFS from there, you can …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 1, 2023</span>
+                    <a href="/posts/01-matrix-bfs/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/insert-interval/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Insert Interval">Insert Interval</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction Today we&rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 1, 2023</span>
+                    <a href="/posts/insert-interval/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div><div class="text-center pt-2">
+    
+
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="pb-2">
+                <a href="http://ashkanfaghihi.dev/" title="Development from &#34;Scratch&#34;">
+                    <img alt="Footer logo" src="/fav.gif"
+                        height="40px" width="40px">
+                </a>
+            </div>
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                Made with
+                <span class="text-danger">
+                    &#10084;
+                </span>
+                and
+                <a href="https://github.com/gurusabarish/hugo-profile" target="_blank"
+                    title="Designed and developed by gurusabarish">
+                    Hugo Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
   </section>
-</footer>
-
-  </main>
-
-  
-
-  
-  
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 </body>
 
 </html>

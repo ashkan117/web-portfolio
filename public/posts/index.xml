@@ -6,14 +6,32 @@
     <description>Recent content in Posts on Development from &#34;Scratch&#34;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Mar 2023 09:10:54 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Mar 2023 17:30:57 -0800</lastBuildDate><atom:link href="http://ashkanfaghihi.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stable Sort = Complex Sort Logic (Draft)</title>
+      <link>http://ashkanfaghihi.dev/posts/stable-sort/</link>
+      <pubDate>Thu, 02 Mar 2023 17:30:57 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/stable-sort/</guid>
+      <description>Introduction Sometimes you learn the hard way in life. Con is that there was a potential cost. On the plus side you will likely not forget it. In today&amp;rsquo;s topic is brought to you by me taking twice as long to complete my interview assessment and potentially failing it for that reason. So the questions asked you to program some logic but the order it required you to do it was the challenge.</description>
+    </item>
+    
+    <item>
+      <title>01 Matrix (BFS with multiple sources)</title>
+      <link>http://ashkanfaghihi.dev/posts/01-matrix-bfs/</link>
+      <pubDate>Wed, 01 Mar 2023 11:23:30 -0800</pubDate>
+      
+      <guid>http://ashkanfaghihi.dev/posts/01-matrix-bfs/</guid>
+      <description>Introduction We&amp;rsquo;re taking a look at 01 Matrix on Leetcode today. The main motivation is to realize that when using BFS you can start with multiple sources instead of a single source. This just means that even though we usually start out with a &amp;ldquo;root&amp;rdquo; and do BFS from there, you can also start from multiple &amp;ldquo;sources&amp;rdquo; and the you get the same benefits of BFS. So we can use this form of BFS to find the minimum path from all 1s to 0s.</description>
+    </item>
+    
     <item>
       <title>Insert Interval</title>
       <link>http://ashkanfaghihi.dev/posts/insert-interval/</link>
       <pubDate>Wed, 01 Mar 2023 09:10:54 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/insert-interval/</guid>
-      <description>Introduction Link to heading Today we&amp;rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&amp;rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a finding an index.</description>
+      <description>Introduction Today we&amp;rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not the high level solving that&amp;rsquo;s difficult but rather the code. The way of viewing these problems that simplify the thinking is by viewing it as a finding an index.</description>
     </item>
     
     <item>
@@ -22,9 +40,9 @@
       <pubDate>Sun, 12 Feb 2023 17:02:24 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/01-matrix-dp/</guid>
-      <description>Trouble Link to heading Even if you traverse the node wouldn&amp;rsquo;t you need to traverse the node for every node. For each node we&amp;rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
+      <description>Trouble Even if you traverse the node wouldn&amp;rsquo;t you need to traverse the node for every node. For each node we&amp;rsquo;d need to determine the distance by traversing it? Multiple traversals are costly
 A Dynamic Programming solution comes into play. Ask your neighbor what is the distance to 0 from you. Pick the neighbor with min distance
-DP solution Link to heading Two direction approach We know that we could do the minimum of all 4 directions plus 1.</description>
+DP solution Two direction approach We know that we could do the minimum of all 4 directions plus 1.</description>
     </item>
     
     <item>
@@ -33,8 +51,8 @@ DP solution Link to heading Two direction approach We know that we could do the 
       <pubDate>Thu, 09 Feb 2023 17:38:45 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/maximum-number-occurrances-substring/</guid>
-      <description>Introduction Link to heading After some time working on Leetcode you start to realize trends in the problem. One category that I have recognized is one where the &amp;ldquo;elegant&amp;rdquo; solution uses simple logic to narrow out work.
-Brute Force Link to heading Create a sliding window with the size of minSize. One of the rules that we need to follow is that the number of unique characters &amp;lt; maxLetters. This is easier than you might think.</description>
+      <description>Introduction After some time working on Leetcode you start to realize trends in the problem. One category that I have recognized is one where the &amp;ldquo;elegant&amp;rdquo; solution uses simple logic to narrow out work.
+Brute Force Create a sliding window with the size of minSize. One of the rules that we need to follow is that the number of unique characters &amp;lt; maxLetters. This is easier than you might think. We can keep track of frequencies with a map.</description>
     </item>
     
     <item>
@@ -43,7 +61,8 @@ Brute Force Link to heading Create a sliding window with the size of minSize. On
       <pubDate>Tue, 07 Feb 2023 09:25:15 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/lowest-common-ancestor-bst/</guid>
-      <description>Characteristics of the problem Link to heading You can&amp;rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&amp;rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.</description>
+      <description>Characteristics of the problem You can&amp;rsquo;t start out with the root (lowest common ancestor) This is really a traversal problem Each node has a range of values that it could contain which is from [min(leftSubtree), max(rightSubtree)]. Understanding this range means we know the possible children of a node through its value. We&amp;rsquo;ll explore the last two towards the end of the blog since these are not as intuitive.
+You can&amp;rsquo;t start out with the root In the constraints of the problem we have the added information that the nodes that we&amp;rsquo;re interested (p and q) are guaranteed to be in the tree.</description>
     </item>
     
     <item>
@@ -52,12 +71,12 @@ Brute Force Link to heading Create a sliding window with the size of minSize. On
       <pubDate>Thu, 02 Feb 2023 18:12:35 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/floyds-algorithm-intuitive-proof/</guid>
-      <description>Introduction Link to heading I found a few resources that I think did a decent job at explaining bits and pieces but not the full thing. This is also a tool for me to think things through as I go through the proof.
+      <description>Introduction I found a few resources that I think did a decent job at explaining bits and pieces but not the full thing. This is also a tool for me to think things through as I go through the proof.
 Leetcode solution with useful insights
 Math stackexchange with useful insights
 Neetcode&amp;rsquo;s solution, useful insights on proof
 Unrelated but cool modulus related history
-Note for clarity Link to heading First node of the tail means -T First node of the cycle means 0</description>
+Note for clarity First node of the tail means -T First node of the cycle means 0</description>
     </item>
     
     <item>
@@ -66,7 +85,7 @@ Note for clarity Link to heading First node of the tail means -T First node of t
       <pubDate>Mon, 30 Jan 2023 09:09:58 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/decode-ways/</guid>
-      <description>Why I like this problem Link to heading https://leetcode.com/problems/decode-ways/
+      <description>Why I like this problem https://leetcode.com/problems/decode-ways/
 A lot of the canonical recursive problems you start out with have really simple code. Things that come to mind are https://leetcode.com/problems/fibonacci-number/, https://leetcode.com/problems/climbing-stairs/ and https://leetcode.com/problems/house-robber/. This is because the recursive calls are really simple, it doesn&amp;rsquo;t really require you to understand how the recursive calls unwind. Decode ways does this will for a few reasons.
 The subproblems are not trivial to &amp;ldquo;build&amp;rdquo; You can&amp;rsquo;t blindly make recursive calls Note: Most solutions end up doing a bottom up approach which is better, I just want to discuess the top down approach since that is usually my first way to tackle these problems.</description>
     </item>
@@ -77,7 +96,7 @@ The subproblems are not trivial to &amp;ldquo;build&amp;rdquo; You can&amp;rsquo
       <pubDate>Fri, 27 Jan 2023 11:16:59 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/quarrel-with-dynamic-programming/</guid>
-      <description>DP is an Art Link to heading Snapshot is clear, global is not Link to heading An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&amp;rsquo;ll go through a leetcode problem. https://leetcode.com/problems/min-cost-climbing-stairs/description/
+      <description>DP is an Art Snapshot is clear, global is not An issue I ran into with developing an intuition with dp is that in some cases the immediete solution is obvious yet I had a nagging sense of how could it be right long term. To explain my issue I&amp;rsquo;ll go through a leetcode problem. https://leetcode.com/problems/min-cost-climbing-stairs/description/
 The case specifially which led to this is one where we can see a large cost being unattractive short term but my intuition was telling me couldn&amp;rsquo;t it be possible that in the long run this is good?</description>
     </item>
     
@@ -87,10 +106,10 @@ The case specifially which led to this is one where we can see a large cost bein
       <pubDate>Thu, 26 Jan 2023 19:15:28 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/</guid>
-      <description>Pre Requisites Link to heading This post won&amp;rsquo;t elaborate on the following topics since there is already many great ones:
-Choose unchoose pattern Leetcode Combinations Problem https://leetcode.com/problems/combinations/description Backtracking Context Link to heading This pattern is often just given as a part of a template for similar problems/ https://leetcode.com/problems/combinations/solutions/429526/general-backtracking-questions-solutions-in-python-for-reference/ https://leetcode.com/problems/combinations/solutions/27006/a-template-to-those-combination-problems/
+      <description>Pre Requisites This post won&amp;rsquo;t elaborate on the following topics since there is already many great ones:
+Choose unchoose pattern Leetcode Combinations Problem https://leetcode.com/problems/combinations/description Backtracking Context This pattern is often just given as a part of a template for similar problems/ https://leetcode.com/problems/combinations/solutions/429526/general-backtracking-questions-solutions-in-python-for-reference/ https://leetcode.com/problems/combinations/solutions/27006/a-template-to-those-combination-problems/
 My goal is to better give intuition behind it by comparing it to an equivalent but different code
-My Initial Solution Link to heading I was working on Leetcode Combinations problem and realized that this is an choose unchoose pattern like problem but my implementation seemed a little funny in comparison.</description>
+My Initial Solution I was working on Leetcode Combinations problem and realized that this is an choose unchoose pattern like problem but my implementation seemed a little funny in comparison.</description>
     </item>
     
     <item>
@@ -99,7 +118,7 @@ My Initial Solution Link to heading I was working on Leetcode Combinations probl
       <pubDate>Sat, 21 Jan 2023 15:16:27 -0800</pubDate>
       
       <guid>http://ashkanfaghihi.dev/posts/my-first-post/</guid>
-      <description>Introduction Link to heading TODO</description>
+      <description>Introduction TODO</description>
     </item>
     
   </channel>

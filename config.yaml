@@ -1,6 +1,6 @@
 baseURL : 'http://ashkanfaghihi.dev/'
 languageCode : 'en-us'
-title : 'Development from "Scratch"'
+title : 'Development past the "basics"'
 # theme = 'ananke'
 # theme = "hugo-coder"
 theme : "hugo-profile"
@@ -50,7 +50,7 @@ Menus:
     #   weight: 2
 
 params:
-  title: "Development from \"Scratch\""
+  title: "Development past the \"basics\""
   description: Learning in public
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.gif"
@@ -116,7 +116,7 @@ params:
     intro: "Hi, my name is"
     title: "Ash"
     subtitle: "I build things and like to learn"
-    content: "A passionate developer. I post things that I find interesting trying to cater towards intermediate developers. Once you pass the tutorial hell there's a long winded area until you reach senior. I want to add material that is practical for when you want to create real projects."
+    content: "As beginning developers you're told the best practices to follow but aren't shown practical examples. They say make sure you test your code but don't show you how to fully test a complicated application. That frustration is what I am aiming to mitigate"
     image: /images/hero.svg
     # roundImage: true # Make hero image circular | default false
     button:

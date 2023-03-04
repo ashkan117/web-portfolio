@@ -1,208 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>
-  Choose Unchoose Pattern Case Study · Development from &#34;Scratch&#34;
-</title>
-    <meta charset="utf-8">
+<html>
+
+<head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.gif type="image/gif">
 
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
 
 
-<meta name="author" content="Ashkan Faghihi">
-<meta name="description" content="A deep look at two different implementations of the choose unchoose pattern for backtracking">
-<meta name="keywords" content="blog,developer,personal">
+<link rel="stylesheet" href="/css/font.css" media="all">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Choose Unchoose Pattern Case Study"/>
-<meta name="twitter:description" content="A deep look at two different implementations of the choose unchoose pattern for backtracking"/>
+
 
 <meta property="og:title" content="Choose Unchoose Pattern Case Study" />
 <meta property="og:description" content="A deep look at two different implementations of the choose unchoose pattern for backtracking" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-01-26T19:15:28-08:00" />
-<meta property="article:modified_time" content="2023-01-26T19:15:28-08:00" />
+<meta property="article:modified_time" content="2023-01-26T19:15:28-08:00" /><meta property="og:site_name" content="Development from &#34;Scratch&#34;" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Choose Unchoose Pattern Case Study"/>
+<meta name="twitter:description" content="A deep look at two different implementations of the choose unchoose pattern for backtracking"/>
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
 
 
 
 
-<link rel="canonical" href="http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/">
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
 
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
 
-<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+    html {
+        background-color: var(--background-color) !important;
+    }
 
-
-  
-  
-  <link rel="stylesheet" href="/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
-
-
-
-
-
-
-  
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
     
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
     
-    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content="A deep look at two different implementations of the choose unchoose pattern for backtracking">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+Choose Unchoose Pattern Case Study | Development from &#34;Scratch&#34;
+
+  </title>
+</head>
+
+<body class="light">
   
-
-
-
- 
-
-
-
-
-<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
-
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-
-<meta name="generator" content="Hugo 0.110.0">
-
-
-
-
-
-  </head>
-
-
-
-
-
-
-<body class="preload-transitions colorscheme-auto">
   
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
-</div>
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
 
 
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="/">
-      Development from &#34;Scratch&#34;
-    </a>
-    
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Blog</a>
-            </li>
-          
-        
-        
-          
-          
-          
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
             
-          
-            
-              
+            <a class="navbar-brand primary-font text-wrap" href="/">
                 
+                <img src="/fav.gif" width="30" height="30"
+                    class="d-inline-block align-top">
+                Development from &#34;Scratch&#34;
                 
-                
-                
-              
-              <li class="navigation-item">
-                <a href="http://ashkanfaghihi.dev/pt-br/"></a>
-              </li>
-            
-          
-        
-      </ul>
-    
-  </section>
-</nav>
-
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">
-            <a class="title-link" href="http://ashkanfaghihi.dev/posts/choose-unchoose-pattern/">
-              Choose Unchoose Pattern Case Study
             </a>
-          </h1>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder="Ctrl + k"
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder="Ctrl + k" aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#experience"
+                            aria-label="experience">
+                            Experience
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#education"
+                            aria-label="education">
+                            Education
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#projects"
+                            aria-label="projects">
+                            Projects
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#contact"
+                            aria-label="contact">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/posts" title="Blog posts">
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime="2023-01-26T19:15:28-08:00">
-                January 26, 2023
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              5-minute read
-            </span>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">Choose Unchoose Pattern Case Study</h1>
+            <div class="text-center">
+               
+              <small>|</small>
+              Jan 26, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
           </div>
           
-          
-          
-        </div>
-      </header>
-
-      <div class="post-content">
-        
-        <h2 id="pre-requisites">
-  Pre Requisites
-  <a class="heading-link" href="#pre-requisites">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+          <article class="page-content  p-2">
+          <h2 id="pre-requisites">Pre Requisites</h2>
 <p>This post won&rsquo;t elaborate on the following topics since there is already many great ones:</p>
 <ul>
 <li>Choose unchoose pattern</li>
 <li>Leetcode Combinations Problem <a href="https://leetcode.com/problems/combinations/description">https://leetcode.com/problems/combinations/description</a></li>
 <li>Backtracking</li>
 </ul>
-<h2 id="context">
-  Context
-  <a class="heading-link" href="#context">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="context">Context</h2>
 <p>This pattern is often just given as a part of a template for similar problems/
 <a href="https://leetcode.com/problems/combinations/solutions/429526/general-backtracking-questions-solutions-in-python-for-reference/">https://leetcode.com/problems/combinations/solutions/429526/general-backtracking-questions-solutions-in-python-for-reference/</a>
 <a href="https://leetcode.com/problems/combinations/solutions/27006/a-template-to-those-combination-problems/">https://leetcode.com/problems/combinations/solutions/27006/a-template-to-those-combination-problems/</a></p>
 <p>My goal is to better give intuition behind it by comparing it to an equivalent but different code</p>
-<h2 id="my-initial-solution">
-  My Initial Solution
-  <a class="heading-link" href="#my-initial-solution">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="my-initial-solution">My Initial Solution</h2>
 <p>I was working on Leetcode Combinations problem and realized that this is an choose unchoose pattern like problem but my implementation seemed a little funny in comparison.
 <a href="https://leetcode.com/problems/combinations/description/">https://leetcode.com/problems/combinations/description/</a></p>
 <p>There were three main differences:</p>
@@ -212,67 +308,37 @@
 <li>Mine contained an additional base case</li>
 </ol>
 <p>We&rsquo;ll see that the main difference ends up being since we use a loop in one but not the other</p>
-<h2 id="two-recursive-calls-vs-one">
-  Two Recursive Calls vs One
-  <a class="heading-link" href="#two-recursive-calls-vs-one">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="two-recursive-calls-vs-one">Two Recursive Calls vs One</h2>
 <p>choices = [1,2,3,4] which is the array we want to find the combinations of dependent on k. In this case the combinations are [1,2], [1,3], [1,4], [2,3], [2,4], [3,4]</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>path.append(choices[i])
-</span></span><span style="display:flex;"><span>dfs(i + 1, depth - 1, path)
-</span></span><span style="display:flex;"><span>path.pop()
-</span></span><span style="display:flex;"><span>dfs(i + 1, depth, path)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(index, len(nums)):
-</span></span><span style="display:flex;"><span>    dfs(depth-1, i+1, path+[choices[i]])
-</span></span></code></pre></div><h3 id="whos-making-the-decision">
-  Who&rsquo;s making the decision
-  <a class="heading-link" href="#whos-making-the-decision">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>path<span style="color:#f92672">.</span>append(choices[i])
+</span></span><span style="display:flex;"><span>dfs(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, depth <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, path)
+</span></span><span style="display:flex;"><span>path<span style="color:#f92672">.</span>pop()
+</span></span><span style="display:flex;"><span>dfs(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, depth, path)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(index, len(nums)):
+</span></span><span style="display:flex;"><span>    dfs(depth<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, path<span style="color:#f92672">+</span>[choices[i]])
+</span></span></code></pre></div><h3 id="whos-making-the-decision">Who&rsquo;s making the decision</h3>
 <p>I think it&rsquo;s a little neat that the second solution is telling the dfs algorithm more information while in the first code block we see that the dfs algorithm picks what to do next. Looking at this code it almost looks like there&rsquo;s no way they produce the same results, yet they do.</p>
 <p>The decision making is the thing that varies. The one with the loop starts with the [] base case and it builds the tree from there.</p>
-<h3 id="the-lack-of-control-results-in-additional-work-done">
-  The lack of control results in additional work done
-  <a class="heading-link" href="#the-lack-of-control-results-in-additional-work-done">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h3>
+<h3 id="the-lack-of-control-results-in-additional-work-done">The lack of control results in additional work done</h3>
 <p>The one without a loop starts with the [] base case and will build on it to find solutions but note that it will end up in with the [] case many times. Going my approach I printed out the call stack.
 The method with the loop has a slightly different approach. It will start with the [] base case but after the lap the loop will give the next recursive calls their starting points.<br>
 []<br>
 [1] [2] [3] [4]</p>
 <p>It will avoid going back to the [] case</p>
 <p>I&rsquo;ve included some scratch at the bottom of the screen to illustrate the method call with no loop.</p>
-<h2 id="how-does-theirs-choose-and-unchoose">
-  How does theirs choose and unchoose
-  <a class="heading-link" href="#how-does-theirs-choose-and-unchoose">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<h2 id="how-does-theirs-choose-and-unchoose">How does theirs choose and unchoose</h2>
 <p>This point ends up being more language specific than you might think. The reason we have the append and pop is since we&rsquo;re passing the path variable to the recursive call while the other one does not change the path variable itself. Let&rsquo;s look at an example where path = [1]</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>path.append(2) # path = [1,2]
-</span></span><span style="display:flex;"><span>dfs(i+1, depth - 1, path) # path = [1,2]
-</span></span><span style="display:flex;"><span>path.pop() # path = [1]
-</span></span><span style="display:flex;"><span>dfs(i+1, depth - 1, path) # path = [1]
-</span></span></code></pre></div><p>On the other hand the other solution relies on what&rsquo;s evaluated it sent to the future stack but this stack remains untouched for future calls. You&rsquo;ll notice the difference on each iteration of the loop</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># path = [1]
-</span></span><span style="display:flex;"><span>for i in range(index, len(choices)):
-</span></span><span style="display:flex;"><span>    dfs(depth-1, i+1, path+[2]) # dfs(depth-1, i + 1, [1,2]) is called
-</span></span><span style="display:flex;"><span>    # path at this point is still [1] just like mine
-</span></span><span style="display:flex;"><span>    # on next iteration of the loop it will send dfs(depth-1, i + 1, [1,3]) is called
-</span></span></code></pre></div><h3 id="why-does-my-code-require-an-additional-check">
-  Why does my code require an additional check?
-  <a class="heading-link" href="#why-does-my-code-require-an-additional-check">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h3>
+<pre tabindex="0"><code>path.append(2) # path = [1,2]
+dfs(i+1, depth - 1, path) # path = [1,2]
+path.pop() # path = [1]
+dfs(i+1, depth - 1, path) # path = [1]
+</code></pre><p>On the other hand the other solution relies on what&rsquo;s evaluated it sent to the future stack but this stack remains untouched for future calls. You&rsquo;ll notice the difference on each iteration of the loop</p>
+<pre tabindex="0"><code># path = [1]
+for i in range(index, len(choices)):
+    dfs(depth-1, i+1, path+[2]) # dfs(depth-1, i + 1, [1,2]) is called
+    # path at this point is still [1] just like mine
+    # on next iteration of the loop it will send dfs(depth-1, i + 1, [1,3]) is called
+</code></pre><h3 id="why-does-my-code-require-an-additional-check">Why does my code require an additional check?</h3>
 <p>Finally we come to the third difference. This is a bit of a reoccuring theme for me where I get off by one errors or out of bounds errors. Understanding your explicit range of numbers is really important. It could be subtle but
 still really important since it helps you get more of a concrete feel of edge cases and how your code iterates through the solution.</p>
 <p>I thought mine would not need the additional i &gt;= len(choices) check since the depth base case will handle it. Not true when you&rsquo;re trying to build the path with the last element in the choices array<br>
@@ -280,25 +346,13 @@ choices = [1,2,3,4]<br>
 path = [4]</p>
 <p>At this point it has not reached the depth of two so it will try and pick the next element in the choices array where it doesn&rsquo;t exist.</p>
 <p>The loop avoids this since</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for i in range(index, len(choices)): # clear bounds of [1,len(choices)]
-</span></span><span style="display:flex;"><span>    # will only call dfs recursive function with these explicit numbers
-</span></span></code></pre></div><p>len(choices) = 4 and our index is on the last element (index = 3, value = 4) it will have one last recursive call. We&rsquo;re passing this recursive call an index of 4 which will now cause the loop not to execute.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for i in range(5, 4): # out of bounds
-</span></span><span style="display:flex;"><span>    # not executed
-</span></span></code></pre></div><h1 id="scratch">
-  Scratch
-  <a class="heading-link" href="#scratch">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h1>
-<h2 id="lack-of-control-results-in-additional-work-done">
-  Lack of control results in additional work done
-  <a class="heading-link" href="#lack-of-control-results-in-additional-work-done">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
-    <span class="sr-only">Link to heading</span>
-  </a>
-</h2>
+<pre tabindex="0"><code>for i in range(index, len(choices)): # clear bounds of [1,len(choices)]
+    # will only call dfs recursive function with these explicit numbers
+</code></pre><p>len(choices) = 4 and our index is on the last element (index = 3, value = 4) it will have one last recursive call. We&rsquo;re passing this recursive call an index of 4 which will now cause the loop not to execute.</p>
+<pre tabindex="0"><code>for i in range(5, 4): # out of bounds
+    # not executed
+</code></pre><h1 id="scratch">Scratch</h1>
+<h2 id="lack-of-control-results-in-additional-work-done">Lack of control results in additional work done</h2>
 <p>choices = [1, 2, 3, 4]<br>
 (index, path)<br>
 index we&rsquo;re looking at from choices array while path which represents a snapshot of a single combination that we&rsquo;re building<br>
@@ -324,67 +378,255 @@ index we&rsquo;re looking at from choices array while path which represents a sn
 4 [4]<br>
 4 []\</p>
 
+          </article>
+        </div>
       </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pre-requisites">Pre Requisites</a></li>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#my-initial-solution">My Initial Solution</a></li>
+    <li><a href="#two-recursive-calls-vs-one">Two Recursive Calls vs One</a>
+      <ul>
+        <li><a href="#whos-making-the-decision">Who&rsquo;s making the decision</a></li>
+        <li><a href="#the-lack-of-control-results-in-additional-work-done">The lack of control results in additional work done</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-does-theirs-choose-and-unchoose">How does theirs choose and unchoose</a>
+      <ul>
+        <li><a href="#why-does-my-code-require-an-additional-check">Why does my code require an additional check?</a></li>
+      </ul>
+    </li>
+  </ul>
 
+  <ul>
+    <li><a href="#lack-of-control-results-in-additional-work-done">Lack of control results in additional work done</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
 
-      <footer>
-        
+          
 
-
-        
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=Choose%20Unchoose%20Pattern%20Case%20Study&url=http%3a%2f%2fashkanfaghihi.dev%2fposts%2fchoose-unchoose-pattern%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=Choose%20Unchoose%20Pattern%20Case%20Study: http%3a%2f%2fashkanfaghihi.dev%2fposts%2fchoose-unchoose-pattern%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=Choose%20Unchoose%20Pattern%20Case%20Study&amp;body=Check%20out%20this%20site http%3a%2f%2fashkanfaghihi.dev%2fposts%2fchoose-unchoose-pattern%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
 
-    <footer class="footer">
-  <section class="container">
-    ©
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    <div class="container py-3" id="recent-posts">
     
-    2023
-     Ashkan Faghihi 
-    ·
     
-    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
     
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/stable-sort/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Stable Sort = Complex Sort Logic (Draft)">Stable Sort = Complex …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction Sometimes you learn the hard way in life. Con is that there was a potential cost. On the plus side you will likely not forget it. In today&rsquo;s topic is brought to you by me taking twice as long to complete my interview assessment and potentially failing it for that reason. So the …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 2, 2023</span>
+                    <a href="/posts/stable-sort/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/01-matrix-bfs/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="01 Matrix (BFS with multiple sources)">01 Matrix (BFS with …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction We&rsquo;re taking a look at 01 Matrix on Leetcode today. The main motivation is to realize that when using BFS you can start with multiple sources instead of a single source. This just means that even though we usually start out with a &ldquo;root&rdquo; and do BFS from there, you can …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 1, 2023</span>
+                    <a href="/posts/01-matrix-bfs/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/insert-interval/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Insert Interval">Insert Interval</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Introduction Today we&rsquo;ll take a look at Insert Interval. The reason why I think this is a useful problem to learn is because it helps you approach these problems in such a way where the code is more intuitive. Essentially the reasoning behind this problem and others like it is that it is not …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Mar 1, 2023</span>
+                    <a href="/posts/insert-interval/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div><div class="text-center pt-2">
+    
+
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="pb-2">
+                <a href="http://ashkanfaghihi.dev/" title="Development from &#34;Scratch&#34;">
+                    <img alt="Footer logo" src="/fav.gif"
+                        height="40px" width="40px">
+                </a>
+            </div>
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                Made with
+                <span class="text-danger">
+                    &#10084;
+                </span>
+                and
+                <a href="https://github.com/gurusabarish/hugo-profile" target="_blank"
+                    title="Designed and developed by gurusabarish">
+                    Hugo Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
   </section>
-</footer>
-
-  </main>
-
-  
-
-  
-  
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 </body>
 
 </html>
