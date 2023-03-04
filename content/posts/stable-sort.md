@@ -1,7 +1,7 @@
 +++ 
 draft = false
 date = 2023-03-02T17:30:57-08:00
-title = "Stable Sort = Complex Sort Logic (Draft)"
+title = "Stable Sort = Complex Sort Logic"
 description = ""
 slug = ""
 authors = []
