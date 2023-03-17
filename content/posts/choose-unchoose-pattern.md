@@ -21,8 +21,10 @@ This post won't elaborate on the following topics since there is already many gr
 This pattern is often just given as a part of a template for similar problems/
 https://leetcode.com/problems/combinations/solutions/429526/general-backtracking-questions-solutions-in-python-for-reference/ 
 https://leetcode.com/problems/combinations/solutions/27006/a-template-to-those-combination-problems/
+https://leetcode.com/problems/combination-sum/description/
 
-My goal is to better give intuition behind it by comparing it to an equivalent but different code
+
+My goal is to better give intuition behind it by comparing it to an equivalent but different code. This post will focus on the choose-unchoose pattern. The next post focuses more on how the loop does the same thing.
 
 ## My Initial Solution
 I was working on Leetcode Combinations problem and realized that this is an choose unchoose pattern like problem but my implementation seemed a little funny in comparison.
@@ -57,18 +59,8 @@ I think it's a little neat that the second solution is telling the dfs algorithm
 
 The decision making is the thing that varies. The one with the loop starts with the [] base case and it builds the tree from there.
 
-### The lack of control results in additional work done
-The one without a loop starts with the [] base case and will build on it to find solutions but note that it will end up in with the [] case many times. Going my approach I printed out the call stack. 
-The method with the loop has a slightly different approach. It will start with the [] base case but after the lap the loop will give the next recursive calls their starting points.\
-[]\
-[1] [2] [3] [4]
-
-It will avoid going back to the [] case
-
-I've included some scratch at the bottom of the screen to illustrate the method call with no loop.
-
 ## How does theirs choose and unchoose 
-This point ends up being more language specific than you might think. The reason we have the append and pop is since we're passing the path variable to the recursive call while the other one does not change the path variable itself. Let's look at an example where path = [1]
+This point ends up being more language specific than you might think. The reason we have the append and pop is since we're passing the path variable to the recursive call while the other one **does not change the path variable itself**. Let's look at an example where path = [1]
 
 ```
 path.append(2) # path = [1,2]
@@ -86,9 +78,18 @@ for i in range(index, len(choices)):
     # on next iteration of the loop it will send dfs(depth-1, i + 1, [1,3]) is called
 ```
 
-### Why does my code require an additional check?
+## More Details (Optional)
+### With the loop you have one less additinal check
+
 Finally we come to the third difference. This is a bit of a reoccuring theme for me where I get off by one errors or out of bounds errors. Understanding your explicit range of numbers is really important. It could be subtle but
 still really important since it helps you get more of a concrete feel of edge cases and how your code iterates through the solution.
+
+My recursive code had an additional check
+
+```python
+if i >= len(choices):
+    return
+```
 
 I thought mine would not need the additional i >= len(choices) check since the depth base case will handle it. Not true when you're trying to build the path with the last element in the choices array\
 choices = [1,2,3,4]\
@@ -107,6 +108,16 @@ for i in range(5, 4): # out of bounds
     # not executed
 ```
 
+
+#### The lack of control results in additional work done
+The one without a loop starts with the [] base case and will build on it to find solutions but note that it will end up in with the [] case many times. Going my approach I printed out the call stack. 
+The method with the loop has a slightly different approach. It will start with the [] base case but after the lap the loop will give the next recursive calls their starting points.\
+[]\
+[1] [2] [3] [4]
+
+It will avoid going back to the [] case
+
+I've included some scratch at the bottom of the screen to illustrate the method call with no loop.
 
 
 
