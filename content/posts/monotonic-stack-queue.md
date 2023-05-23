@@ -1,8 +1,8 @@
 +++ 
-draft = true
-date = 2023-02-05T12:49:41-08:00
-title = ""
-description = ""
+draft = false
+date = 2023-05-23T12:49:41-08:00
+title = "Monotonic Stack/Queue (Part 1)"
+description = "General introduction to Monotonic Stack with the example of Next Greater Element"
 slug = ""
 authors = []
 tags = []
@@ -11,85 +11,98 @@ externalLink = ""
 series = []
 +++
 
-# Intuition
+## Goal
+Introduces you mainly to the Monotonic Stack in an intuitive way with code snippets included. This post should help you understand when to start thinking of using a monotonic stack.
 
-truoe
-https://leetcode.com/problems/daily-temperatures/solutions/2924758/efficient-and-simple-intution-solution-with-o-n-space-and-time-peek-valley-approach/ \
-https://brilliantprogrammer.com/blog/what-is-monotonic-stack/ 
-best short and sweet \
-https://stackoverflow.com/questions/55780200/intuition-behind-using-a-monotonic-stack 
-good intuitive answer\
-https://leetcode.com/problems/daily-temperatures/solutions/1682915/illustrated-explanation/ 
-good image \
-https://medium.com/techtofreedom/algorithms-for-interview-2-monotonic-stack-462251689da8 
-introduces idea of range queries\
-https://leetcode.com/problems/sum-of-subarray-minimums/solutions/2118729/very-detailed-stack-explanation-o-n-images-comments/?orderBy=most_votes 
-great answer to similar problwem\\
+## Introduction
+In some problems like [next greater element](https://leetcode.com/problems/next-greater-element-i/description/) you see this pattern where one value can trump many others. Let's look at an example of this relative to next greater element. 
 
-# One
-https://1e9.medium.com/monotonic-queue-notes-980a019d5793  good interactive ui
-Non increasing
+[3,2,1,9]\
+In this example we see that all the elements (3,2,1) end up all sharing the next greater element. Intuitively I think the easiest example to understand is if you're in a line of people. If you can only look ahead you'll realize that the next tallest person in front of you is
+1. Visible
+2. Blocks you from seeing people in front of them
 
-This problem goes through the array from reverse keeping a monotonic decreasing stack.
-If you add a number onto the stack then you:
-1. Know the current number is the minimum element
-2. Since it's a monotonic and decreasing then you know also have found an increasing subsequence in the array for this element
-    - stack = [100, 76, 47], with 47 being the newest element added we also see that (47, 76, 100) represents an increasing subsequence
-    - identifying how far back a new small number’s range extends. We see that the range or the trend of decreasing nature extends from 100 to 47
-    - Think of you're standing in the front of the stack [100, 76, 47, youhere] if each value was a colored column you could easily see an increasing subsequence. Why remove the numbers. *What added value is it that the number in front is the minimum" that way you know it's an increasing subsequence in code? yEAH you're saying everything in that stack is an increasing subsequence. Otherwise ifit was 100, 1, 76, 47 you can say that you see an increasing subsequence of 100, 76, 47 
-    but you can't say all the items in there are an increasing subsequence
-3. 
-
-# Peak and Valley View (Which history you want determines which form of monotonic stack/queue to use)
-![image](/images/monotonic-stack-4.jpeg)
-1. First Uphill: Until we reach a peak we know that the values must be increasing. Therefore, for all the values until the peek, every temp next to it is greater than previous. 73 < 74 < 75
-2. Downhill: Until we reach the valley we know that the values are decreasing. Since we're looking for the next greater elements in this case these values have to wait for the next peak. 
-    - Think of one of the values on this downhill. For example, 71 needs to wait until we start climbing uphill in order to find an element greater than it.
-3. Nth Uphill: Once increasing values found, look back all the elements in valley(this means elements from the most recent peak to most recent valley) lesser than the increasing value. 
-    - Now that we're increasing again we can take a look at the elements that were waiting for an increasing value.
-    - 72 finds [75, 71, 69] in the stack. We see that 72 > 69 and 72 > 71 so we've found the next greater element. Stack is now [75]
-    - 76 finds [75] in the stack. 76 > 75 so we've found 75's next greater element. Stack is now []
-
-In this problem we'd want a monotonic decreasing stack. The reason behind this is because of the key insight of 2. While we're waiting for the second uphill this is where we want to collect the list of elements waiting for an increasing value.
-
-We collect [75, 71, 69] with 69 being the top of the stack. The incoming element is 72 which we can see will be greater than 69 and 71. This means that we have found the next greater element for both 69 and 71 but not yet for 75.
-On the next iteration we have [75] left on the stack and the incoming element is 76. This allows us to pop of 75 as well since we've found the element after 75 that has a greater value.
-
-Random observations
-- We know for sure that the value on the uphill right after the peak must be greater than the peak
-
-# Breaking down intuition
-![image](/images/monotonic-stack-2.png)
-> Visualize the array as a line graph, with (local) minima as valleys. Each value is relevant for a **range** that extends from just after the previous smaller value (if any) to just before the next smaller value (if any). (Even a value larger than its neighbors matters when considering the singleton subarray that contains it.) 
-
-In my head this represents that if you look at 74 on the line graph the previous smaller value is 73 which is just next to it. Howver the next smaller value is 71.
-
-> Recognizing that a value **shadows** every value larger than it in each direction separately
-This means that every smaller value behaves as the shadow of every larger value. For example, 71 shadows the 76 ahead of it and the 75 behind it.
-
-> ... , the stack maintains a list of previous, unshadowed minima
-
-An unshadowed minima is a value that itself does not shadow any value which is the same as saying this value has nothing smaller than it. 
-
-This makes sense since the stack is a monotinicly increasing in this case. So as you're iterating through t
+![Standing in Line courtesy of AlgoMonster](/images/monotonic-stack-line.jpg)
 
 
-> [the] stack maintains a list of previous, unshadowed minima for two purposes: identifying how far back a new small number’s range extends and (at the same time) how far forward the invalidated minima’s ranges extend. 
+This idea that your vision is blocked by a "leading" element is the use case where monotonic stacks/queues shines. This is because it allows us to **report back** to each index in the array where your next greater element is.
 
-# Ephasizing on both directions
-73, 74, 75, 71, 69, 72, 76, 73
-The monotonic stack can help you determine the next largest or smallest going in both directions. Let's focus on picking the next largest element. So if we pick 69 we see that if we move to the left the next largest is 75. The next largest going to the right would be 72.
-## Decreasing Monotonic Stack
-Downhill: [75, 71, 69]
-If you take an element and look to its left you can find the previous elements that are greater. 71 is the first greater element going to the left. Looking in the input array we see that 72 is the next greater element going to the right. 
-- You can't use it to find all the elements greater to the **left**.
-    - 73 and 74 are also greater than 69 but they were popped off earlier
-- You can't use it to find all the elements greater to the **right**
-    - As soon as you see a larger element 69 gets popped off the stack so we'll lose info
+## Intuition
+The reason why a stack is useful is because we're **building a line** of elements that can be **ejected** as soon as some constraint is met. Again let's focus on the next greater element 
+example in order to give more concrete examples. 
 
+[3,2,1,9]\
+So in this case the line that builds is (3,2,1) because they are all waiting for some element to appear that is larger than them in order 
+to answer the question of what is my next larger element. Why use a monontonic stack? To make our algorithm faster, by building this line we're 
+able to answer some question for multiple elements at once. In thise case we're asking the question what is the next element in the list that is greater than me.
+We end up building a line in our stack however as soon as we see 9 we have enough information to answer who is my next greater element for (3,2,1) all at once.
 
-When you pop an element because we've found a larger element, the element that causes us to pop is the next largest value going to the right of the element.
-- 72 causes 69 to pop. 72 is the next greater element of 69 going to the right.
-The value of the element below in the stack is the next larger element moving to the left.
-- When 69 enters we have 71 already there. 71 is the next larger element going to the left
+This idea of building a line goes hand in hand with queues and stacks which is why we use them for this algorithm in order to increase our time complexity. 
 
+> We'll focus on using a stack in our examples. This is because there are seemingly a lot more examples for it however when I run into a queue I will add those examples.
+
+### General Code
+The code is actually really simple however there are a lot of variations since the condition and the information gained is relative to the question.
+However, just think of it as we're iterating through some list where we are using the stack to extract some information
+in an efficient manner. We always append an item but before we do we must make sure that the constraint is not violated. 
+```python
+stack = []
+for item in items:
+    while stack and item <= stack[-1]:
+        top = stack.pop()
+        # information gained here
+        # at this point we've learned that 
+    stack.append(item)
+```
+
+For a **increasing** stack the variant is that all elements in the stack, if any, must be smaller than (or equal to) us.\
+For a **decreasing** stack the variant is that all elements in the stack, if any, must be greater than (or equal to) us.
+
+To keep these variants satisfied we kick out any elements in the stack that violate our condition.
+
+> The easiest way to reach the code is by thinking backwards. What case leads us to a situation where the condition is not satisfied. In the next greater element case,
+this would be if we never have a next greater element. If our input is [5, 4, 3, 2, 1] then our output is [-1, -1, -1, -1, -1] since each element is its own relative max.
+
+## Report Back Functionality (Next smaller element)
+I believe one of the reasons that this concept is hard to understand is because the problems that rely on it don't make it intuitive. I was trying to think of a 
+practical example where we can use the monotonic stack to find the next smaller number which was a little hard. However, lets take a look at the following example.
+Let's say we have an array that represents how level a road is. 1 means level, 0 means pothole. So [1,1,1,0,1,0] would mean our road has two holes in it.
+We can use (non-strict) decreasing monotonic stack to find the holes. 
+
+This led me to wonder, why can't we just iterate forward to find the holes? The only answer I can think of is that we're able to report back to 
+each element where the hole is. We can return back an array that represents the index of the next hole. 
+
+### Break Down
+In this case we're interested in reporting back the index of the holes/potholes. This means in our stack we keep track of the indicies and check the values
+through those indicies (items[stack[-1]])
+So while we see a level road we keep on adding to the stack. As soon as we see a hole then we want to report back to all those indicies of the road
+that we found a hole at some index.
+
+### Code
+```python
+stack, result = [], []
+items = [1,1,1,0,1,0]
+for i, item in enumerate(items):
+    while stack and item < items[stack[-1]]:
+        top = stack.pop()
+        # information gained here: we've found a 0
+        # pop off as many ones as we have in the stack
+        result.append(i)
+    if item == 1: stack.append(i)
+    else: result.append(-1) # holes don't care about other holes
+while stack:
+    stack.pop()
+    result.append(-1)
+print(result) # [3,3,3,-1,5,-1]
+```
+
+## Conclusion
+This pattern is extremely general but since the code is not too involved it's fairly 
+easy to implement as long as you understand the motivation.
+
+Whenever you see the following ideas in a question think to use Monotonic Stack/Queue
+1. There is an item in a list that **shadows/trumps** other elements
+2. Report back to the other elements which value is the one that shadows the others in an efficient manner
+
+## Resources
+https://algo.monster/problems/mono_stack_intro
