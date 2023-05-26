@@ -5,6 +5,11 @@ title : 'Development after the "basics"'
 # theme = "hugo-coder"
 theme : "hugo-profile"
 
+taxonomies:
+  tag: "tags"
+  series: "series"
+  controller: "controllers"
+
 outputs:
   home:
     - "HTML"

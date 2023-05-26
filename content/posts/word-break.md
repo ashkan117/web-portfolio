@@ -1,9 +1,16 @@
----
-title: "Word Break = Choosing Partitions"
-math: true
-date: 2023-05-24T17:30:34-07:00
-draft: false
----
++++ 
+title= "Word Break = Choosing Partitions"
+math= true
+date= 2023-05-24T17:30:34-07:00
+draft= false
+description = ""
+slug = ""
+authors = []
+categories = []
+externalLink = ""
+tags = ["O(2^N)"]
+series = ["Word Break"]
++++
 
 ## Intro
 Given a string of length n, there are n + 1 ways to split it into two parts.
