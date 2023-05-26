@@ -1,5 +1,5 @@
 ---
-title: "Word Break: Brute Force Solution"
+title: "Word Break = Choosing Partitions"
 math: true
 date: 2023-05-24T17:30:34-07:00
 draft: false
@@ -30,7 +30,7 @@ We can split this up into [2,3] and [5]. Notice that the following combinations 
 hints at how word-break is similar to these problems but not the same.
 
 
-### Partitioning (n+1 ways to partition)
+### Partitioning (n + 1 ways to partition)
 So it is not the same as choosing elements from a list what is it like?
 We are breaking up a word into pieces which implicitly means that we must include all characters of 
 that word in a specific order. So the problem in this case is not which elements of the set do we choose but rather how can we break up a word.
@@ -55,7 +55,7 @@ Notice that the partitions are all different locations so they are all considere
 the result of the first partition and last partition result in the same word break. That is because if we choose the very first partition and 
 only that partition our splits become "" and "aaab". Likewise, if we choose the very last partition we'll end up with "aaab" and "". 
 So although we stated that "Given a string of length n, there are n + 1 ways to split it into two parts"
-So in the context of this element we can really split it up into N ways where N is the length of the string.
+**So in the context of this element we can really split it up into N ways where N is the length of the string.**
 
 ## Choosing a partition = Splitting word into two
 So far we've answered where the n + 1 comes from however, can we break down what the editorial meant when it says to split it into two parts? 
@@ -133,7 +133,17 @@ We have to try all possible combinations of choosing these splits which leads us
 
 $$ PowerSet(possiblePartitions) = {{4} \choose {1}} + {{4} \choose {2}} + {{4} \choose {3}} + {{4} \choose {4}} $$
 
+We won't discuss things in this article, however since this way of solving requires the power set then we also know the time complexity. It becomes O(2^N) because in this case we are choosing the number of partitions we're taking and there are N partitions where N = len(string). Furthermore, it's because you always have the chose to choose a partition or to not choose a partition. This pattern ends up being O(2^N). If you are interested in a deeper analysis on power sets and combinations please take a look at this [great article](https://medium.com/outco/how-to-solve-power-set-c8ef7d1382ee) from Sergey Piterman. 
+
+$$ Time Complexity = O(2^N), Space Complexity: O(N) $$
+
 ## Outro
 Hopefully this posts gives you a more intuitive insight on how this problem can be viewed through the lens of parititons and combinations. I belive that once you see it in this light
 you're over the major humps of breaking this problem. More importantly the goal is to have these 
 insights carry over into other problems. Understanding how to iterate through subproblems is most of leetcode type problems.
+
+## Resources
+https://leetcode.com/problems/word-break/solutions/43812/o-2-n-or-o-n/comments/43066
+https://leetcode.com/problems/word-break/solutions/169383/The-Time-Complexity-of-The-Brute-Force-Method-Should-Be-O(2n)-and-Prove-It-Below/comments/255523
+https://leetcode.com/problems/word-break/solutions/169383/The-Time-Complexity-of-The-Brute-Force-Method-Should-Be-O(2n)-and-Prove-It-Below/comments/221580
+
