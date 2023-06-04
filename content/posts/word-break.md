@@ -153,4 +153,4 @@ insights carry over into other problems. Understanding how to iterate through su
 https://leetcode.com/problems/word-break/solutions/43812/o-2-n-or-o-n/comments/43066
 https://leetcode.com/problems/word-break/solutions/169383/The-Time-Complexity-of-The-Brute-Force-Method-Should-Be-O(2n)-and-Prove-It-Below/comments/255523
 https://leetcode.com/problems/word-break/solutions/169383/The-Time-Complexity-of-The-Brute-Force-Method-Should-Be-O(2n)-and-Prove-It-Below/comments/221580
-
+https://medium.com/outco/how-to-solve-power-set-c8ef7d1382ee
