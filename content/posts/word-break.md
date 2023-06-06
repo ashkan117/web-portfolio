@@ -13,8 +13,11 @@ series = ["Word Break"]
 +++
 
 ## Intro
-Given a string of length n, there are n + 1 ways to split it into two parts.
+In this post we'll go over the popular leetcode problem [Word Break](https://leetcode.com/problems/word-break/description/). This posts focuses more
+on how this problem can be viewed as choosing partitions. I belive that at a first glance it seems like there is no connection between the two so it is a 
+neat discovery to make. In the editorial it says  
 
+Given a string of length n, there are n + 1 ways to split it into two parts.
 The goal of this post is to 
 1. explain why that is relevant to the brute force solution
 2. explain why it's true

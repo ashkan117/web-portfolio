@@ -3,7 +3,7 @@ title= "Flip Matrix Brute Force"
 date= 2023-06-03T13:08:51-07:00
 draft= false
 series= ["Flip Matrix"]
-tags= ["recursion", "backtracking", "python-tips"]
+tags= ["recursion", "backtracking" ]
 +++
 
 ## Introduction
@@ -12,6 +12,7 @@ tags= ["recursion", "backtracking", "python-tips"]
 In our previous posts we learned how to reverse rows and columns which we can use to solve Flip Matrix in a brute force way.
 
 ## Calculating sum of a quadrant
+Part of the flip matrix problem requires us to calculate the **upper left quadrant's sum**.
 At first this sounds complicated but it is not too bad. A quadrant is just a quarter of the matrix. This means we know that the width 
 is half of the full width and the height is half of the full height. I think visualizing it as indicies could make things more clear.
 
@@ -39,6 +40,8 @@ We just ensure that the range of both rows and cols are half.
 ```python
 total_sum = sum(matrix[r][c] for c in range(len(cols) // 2) for r in range(len(rows) // 2))
 ```
+
+Therefore, viewing the quadrants as a subset of the matrix that you can easily iterate over makes it easier to reason about.
 
 ## Putting it all together
 ```python

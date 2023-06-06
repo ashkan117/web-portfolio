@@ -3,18 +3,27 @@ title= "Reversing rows and cols with Python"
 date= 2023-06-03T10:29:24-07:00
 draft= false
 series= ["Flip Matrix"]
-tags= ["recursion", "backtracking"]
+tags= ["recursion", "backtracking", "python-tips"]
 +++
 
-## Compliment index and List Comprehensions
-List comphrehensions end up being very handy in this problem since it's an easy way to create a matrix
+## Introduction
+I want to cover the [Flipping the Matrix](https://www.hackerrank.com/challenges/flipping-the-matrix/problem) problem in a non optimal way 
+in order to practice a few fundamentals that I think are important. In this post we'll cover nested loops and list comprehensions and in the next post we will
+cover backtracking and combinations.
+
+List comprehensions are not a one size fix all tool. The more complicated the looping logic is the harder it becomes to read the code in many cases.
+Use it where it feels natural and don't force things. Even in this case there is not an insane benefit to using them but I thought it would 
+be good educational content.
+
+In this problem list comprehensions end up being very handy in this problem since it's an easy way to create a matrix
 using our original matrix but not modifying the original matrix.
 
-### Compliment index helps us simplify our code
+> When manipulating existing iterables see if list comprehensions can simplify your work and logic.
 
-In this view the way we are able to handle things is by copying everything over except the row or column we're interested in.
-For that row or column we're interested in we want to look at things in reverse. However, that sort of logic is not 
-too simple to code since we're trying to do conditional loops. 
+## Using the idea of a compliment to simplify code
+When we're flipping/reversing a row/column what we're really doing is keeping everything the same except for the row or column we're interested in.
+For that row or column we're interested in we want to look at things in reverse. 
+However, that sort of logic is not too simple to code since we're trying to do conditional loops. It would look something like. 
 
 ```python
 if row_we_want_to_reverse:
@@ -23,7 +32,7 @@ else:
     iterate regularly
 ```
 
-Another way we can view things is as the complement.
+This type of logic could be simplified by viewing things in a different light. We'll look at the "iteration pattern" through the following example:
 
 [1, 2, 3],\
 [4, 5, 6],\
@@ -59,7 +68,7 @@ def reverse_row(row, m):
     return new_matrix
 ```
 
-### List comprehension to reverse row
+## List comprehension to reverse row
 We can shorten this even more by using list comphrehensions. Let's start simple by imagining we wanted to just create a new copy of the 
 matrix using list comprehensions. 
 1. We need a list within a list since it's a 2D matrix. ([[]])
@@ -85,17 +94,17 @@ def reverse_row(row, m):
 > always do it the more verbose way. List comprehensions get a bit too complicated when it comes to
 > multiple dimensions of an array.
 
-### List comprehension to reverse row
+## List comprehension to reverse column
+
+Finally lets reverse the column following similar logic from reversing the row. In this case now the column index actually stays
+fixed while we iterate through the rows. And again to avoid the weird conditional looping idea we can just use the "compliment".
+
 ```python
 def reverse_column(col, m):
     rows, cols = len(m), len(m[0])
-    # new_matrix = [[m[r][c] for row in rows] for col in cols]
-    # make a copy of this row, for each row in matrix
     new_matrix = [row[:] for row in m]
     for r in range(rows):
         for c in range(cols):
-            # if this is the column we're interested in
-            # only modify this col, everything else stays untouched
             if c == col:
                 new_matrix[r][c] = m[rows - 1 - r][c]
     return new_matrix
@@ -108,3 +117,9 @@ def reverse_column(col, m):
     rows, cols = len(m), len(m[0])
     return [[m[rows - 1 -r][c] if c == col else m[r][c] for c in range(cols)] for r in range(rows)]
 ```
+
+## Final Notes
+List comprehensions come in handy to make your code more compact however it could make it harder to read if the logic is too complex.
+While building your list comphrehensions it could be easier to build if you do things iteratively. In our case we pretended 
+we just wanted to copy over the array at first. Once that feels comfortable you can manipulate the values of the sequences you're 
+iterating over.
