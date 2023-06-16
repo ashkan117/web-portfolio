@@ -1,8 +1,9 @@
----
-title: "Non Divisible Subset I"
-date: 2023-06-14T12:43:16-07:00
-draft: false
----
++++
+title= "Non Divisible Subset I"
+date= 2023-06-14T12:43:16-07:00
+draft= false
+tags= ["brute force"]
++++
 
 ## Introduction
 Hackkerank medium problems continue to be a challenge for me. In this problem that we'll take a look at it was challenging due to the fact that the 
