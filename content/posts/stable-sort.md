@@ -83,7 +83,7 @@ can comes before mouse since they both have same count. Button comes before note
 
 That is the nature of a stable sort. 
 
-> **Define what you want to happen in the tie first, then do the sort**
+> **Define the order of sorts in a single event**
 
 Again it is not obvious but this will scale even if our tuple had more than 2 elements.
 
