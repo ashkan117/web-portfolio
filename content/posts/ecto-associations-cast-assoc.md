@@ -1,72 +1,123 @@
 ---
-title: "Ecto Associations: Inserting Data to an Existing Parent"
+title: "Ecto Associations I: Working with Associations as a Whole"
 date: 2024-05-06T10:35:23+01:00
-draft: true
+draft: false
 ---
 
-## TLDR
+## Motivation
 
-Associations in Ecto are a little confusing. This post will focus on some important quirks that working with associations comes with.
-Note that part of the confusion is when to use which flavor of association functions like `put_assoc`, `cast_assoc`, `build_assoc`. Another part 
-will focus on that but this post will use `cast_assoc` as the foundation to first clarify things that all these methods have in common.
+One thing that might not be intuitive at first is that associations work
+on the whole collection of data. You'll see this mentioned in a few ways in
+the docs. They'll usually say that methods like `cast_assoc` and `put_assoc`
+work with the **full data** or the **work with the associations as a whole**.
+Let's look at an example to see what this means.
 
-## Associations as a Whole: All or Nothing
+## Work with the Associations as a Whole
 
-One thing that might not be intuitive at first is that associations work on the whole collection of data. 
-Meaning that if you're not careful you can actually replace your associations so read carefully. Inserting one new item might mean actually removing all others!
-
-Let's look at a common scenario that you'll run into; inserting new items to an existing parent item. We'll follow an example that use used in the [Ecto docs](https://hexdocs.pm/ecto/Ecto.Changeset.html#put_assoc/4-example-adding-a-comment-to-a-post).
+`post_assoc` looks like `put_assoc(changeset, name, value, opts \\ [])`.
+When it says that we must with the **data as a whole** that means that
+the value that we pass represents the ultimate end value of the association.
+So the following code snippet.
 
 ```elixir
-comment_one = %Comment{body: "Oh really?"}
-comment_two = %Comment{body: "Read the Friendly Manual!"}
 post
-|> Ecto.Changeset.cast_assoc(:comments, [comment_one, comment_two])
+|> Repo.preload(:tags)
+|> Ecto.Changeset.change()
+# the tags field will end up being 2 items
+|> Ecto.Changeset.put_assoc(:tags, [existing_tag, new_tag])
 |> Repo.update!()
 ```
 
-At first this looks like a reasonable way to insert two new comments but this would actually replace all the previous comments with just these two. So whenever you see in the docs that methods like `cast_assoc` and `put_assoc` work with the **full data** or the **work with the associations as a whole** this is what that means.
+## Associations must have their previous relationships maintained (Need for `preload`)
 
-## Preload + List Manipulations
+Working with the data as a whole tells us what the final result should be
+but there's some work that needs to happen before that. For example,
+in the previous case, we're ending with two tags with that post.
+Let's say one of them exists and the other is a new tag that we're creating.
+At the very least we need to.
 
-Now that we see that we work with the whole data how can we handle this? By fetching the data. That is Why
-you'll commonly see a preload tied with `cast_assoc` like changes. Since we're working with the whole data 
-we need to think of this update operation as a list operation. If you have an existing list of comments 
-and some new comments then you need to update the list with prepend or the `++/2` operation.
+1. Create a new Tag.
+2. Make a note that the post is connected to the existing tag as well.
+
+There's one other potential case. **What if previously the post was connected
+to other tags?** Let's say previously tags was equal to `[old_tag, existing_tag]`.
+If the ending value will be [existing_tag, new_tag] that means that we need
+to make sure that the `old_tag` is no longer tied to `post`.
+
+> For this reason we are required to preload the associations. We always
+> need to make sure that we properly maintain **previous** relationships.
+
+## Warning: Be careful not to "append" items to a list
+
+If you're not careful or are just starting you can
+actually replace your associations so read carefully. If you're trying to
+append a single item to a list of associations you could might mean
+actually replace all your data with that item!
+
+Let's look at a common scenario that you'll run into; inserting new items to an existing
+parent item. We'll follow an example that use used in the [Ecto docs](https://hexdocs.pm/ecto/Ecto.Changeset.html#put_assoc/4-example-adding-a-comment-to-a-post).
 
 ```elixir
+new_comment = %Comment{body: "Read the Friendly Manual!"}
 post
 |> Repo.preload(:comments)
 |> Ecto.Changeset.change()
-|> Ecto.Changeset.put_assoc(:comments, [comment_one | [comment_two | post.comments])
+|> Ecto.Changeset.put_assoc(:comments, [new_comment])
 |> Repo.update!()
 ```
 
-## Reversing the Relationship (Update -> Insert): A more efficient approach
+At first this looks like a reasonable way to append one new
+comments but this would actually replace all the previous comments with just
+one. Since `cast_assoc` and `put_assoc` and work with the **full data**
+what we're actually doing is saying that the final value for this
+post comments is equal to the single list `[new_comment]`.
 
-The final part of this post will cover a better way to handle this scenario. Which the docs highlight as well. If you think about these operations you can run into many situations where this approach won't be too efficient. Think of `has_many` relationships where you would have large lists. A Discord Chat might have many messages in each channel. A flashcard app might have hundreds of cards per Deck. Loading the full list of child elements just to update a few could have its problems. Therefore switch the relationship around. 
+## Reversing the Relationship For Appends (Update -> Insert): A more efficient approach
 
-Another view of this is that we want to insert a couple comments. As long as we update the proper relationships in the child element then on a future load of all of the comments, things will work.
+Think of `has_many` relationships where you would have large lists. A Discord
+Chat might have many messages in each channel. A flashcard app might have hundreds
+of cards per Deck. Loading the full list of child elements just to update a few
+could have its performance problems. Therefore switch the relationship around.
+Another view of this is that we want to insert a couple comments.
+As long as we update the
+proper relationships in the child element then on a future load of all of
+the comments, things will work.
 
 ```elixir
 %Comment{body: "better example"}
 |> Ecto.Changeset.change()
 |> Ecto.Changeset.put_assoc(:post, post)
-|> Repo.insert!() 
+|> Repo.insert!()
 
 %Comment{body: "Thank you for reading the friendly manual!"}
 |> Ecto.Changeset.change()
 |> Ecto.Changeset.put_assoc(:post, post)
-|> Repo.insert!() 
+|> Repo.insert!()
 ```
 
-It's important to tie this back to what the database operations are. In reality this is just ensuring that foreign key relationship is maintained. In this case the comment database has a `post_id` column that is updated.
+It's important to tie this back to what the database operations are.
+In reality this is just ensuring that foreign key relationship is maintained.
+In this case the comment database has a `post_id` column that is updated.
 
 ```elixir
 %Comment{body: "simple example", post_id: post.id}
 |> Repo.insert!()
 ```
 
-The next time we load all the comments of the post, it will find this new comment.
+> If you don’t preload the :tags association, Ecto will raise an error
+> because it does not have enough information about the
+> existing tags to properly update it (e.g., which records to add, remove, or modify).
+>
+> ```bash
+> ** (ArgumentError) you are attempting to change relation :tags of SampleApp.Post,
+> but the data is not loaded. Please preload your associations before manipulating
+> them through changesets.
+> ```
 
+## Conclusion
 
+- We must work with the **full data** / **work with the associations as a whole**
+- In order to properly maintain SQL relationships we must know what the
+  previous state was with `preload`
+- Since we must work with the full data, be careful for performance issues
+  of how we update list relationships
