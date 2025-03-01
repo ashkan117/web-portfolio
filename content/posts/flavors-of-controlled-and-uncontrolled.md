@@ -1,7 +1,7 @@
 ---
 title: "Flavors of Controlled and Uncontrolled"
-date: 2024-10-19T13:29:28+01:00
-draft: true
+date: 2024-10-20T13:29:28+01:00
+draft: false
 ---
 
 ## Conventions of Controlled and Uncontrolled Components
