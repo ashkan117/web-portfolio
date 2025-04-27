@@ -138,6 +138,10 @@ Phoenix uses a GenServer and an ETS to handle this.
 2. Remotely Connected Clients: Every time a new phoenix server node joins,
    it is recorded by `Phoenix.PubSub.PG2Server` and manged by `pg2`
 
+## TODO Registry?
+
+https://kobrakai.de/kolumne/matrjoschka
+
 ## Resources
 
 - HTTP vs Websocket Basics: <https://ably.com/topic/websockets-vs-http#which-to-choose-web-sockets-or-http>
